@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="src\Curated\ClientAccumulator.cs" />
   </ItemGroup>
 

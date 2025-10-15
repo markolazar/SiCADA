@@ -1,0 +1,1807 @@
+TYPE "udtSCADAAnalogValve"
+VERSION : 0.1
+   STRUCT
+      ValueEGU : Real;   // Actual open request (in % or Eng units)
+      ManValueEGU : Real;   // Manual (SCADA) open request (in % or Eng units)
+      State : Bool;   // State valve
+      Alarm : Bool;   // 1=Valve in alarm (state of limit swithes is inappropriate)
+      Manual : Bool;   // Manual override indication, 1 = Valve is manually overriden
+      Interlock : Bool;   // 1=Basic interlock active
+      Spare4 : Bool;   // Spare
+      Spare5 : Bool;   // Spare
+      Spare6 : Bool;   // Spare
+      Spare7 : Bool;   // Spare
+      SpareByte : Byte;   // Spare
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "dbAnalogValvesSCADA"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+      PCV_6ME_102 : "udtSCADAAnalogValve";   //  CA supply to media header regulating valve
+      CV_6B1_402 : "udtSCADAAnalogValve";   //  F-3B1-301 outlet regulating valve
+      V_6HC_241 : "udtSCADAAnalogValve";   // HC Supply Valve A1
+      V_6HC_242 : "udtSCADAAnalogValve";   // HC Supply Valve A0
+      V_6HC_245 : "udtSCADAAnalogValve";   // HC Supply Valve FD Vessel
+      V_6HC_236 : "udtSCADAAnalogValve";   // HC Supply Valve B0
+      V_6HC_235 : "udtSCADAAnalogValve";   // HC Supply Valve FD Vessel
+      V_6HC_238 : "udtSCADAAnalogValve";   // HC Supply Valve C1
+      V_6HC_239 : "udtSCADAAnalogValve";   // HC Supply Valve C0
+      V_6HC_148 : "udtSCADAAnalogValve";   // HC CW Supply Mix Valve to HE103
+      V_6HC_249 : "udtSCADAAnalogValve";   // HC CW Supply Mix Valve to HE202
+      V_6HC_146 : "udtSCADAAnalogValve";   // HC Steam Supply Valve to HE101
+      V_6HC_243 : "udtSCADAAnalogValve";
+      V_6HC_252 : "udtSCADAAnalogValve";
+      Spare_2 : "udtSCADAAnalogValve";
+      Spare_3 : "udtSCADAAnalogValve";
+      Spare_4 : "udtSCADAAnalogValve";
+      Spare_5 : "udtSCADAAnalogValve";
+      Spare_6 : "udtSCADAAnalogValve";
+   END_STRUCT;
+
+
+BEGIN
+   PCV_6ME_102.ValueEGU := 0.0;
+   PCV_6ME_102.ManValueEGU := -1.0;
+   PCV_6ME_102.State := FALSE;
+   PCV_6ME_102.Alarm := FALSE;
+   PCV_6ME_102.Manual := FALSE;
+   PCV_6ME_102.Interlock := FALSE;
+   PCV_6ME_102.Spare4 := FALSE;
+   PCV_6ME_102.Spare5 := FALSE;
+   PCV_6ME_102.Spare6 := FALSE;
+   PCV_6ME_102.Spare7 := FALSE;
+   PCV_6ME_102.SpareByte := 16#00;
+   CV_6B1_402.ValueEGU := 0.0;
+   CV_6B1_402.ManValueEGU := -1.0;
+   CV_6B1_402.State := FALSE;
+   CV_6B1_402.Alarm := FALSE;
+   CV_6B1_402.Manual := FALSE;
+   CV_6B1_402.Interlock := FALSE;
+   CV_6B1_402.Spare4 := FALSE;
+   CV_6B1_402.Spare5 := FALSE;
+   CV_6B1_402.Spare6 := FALSE;
+   CV_6B1_402.Spare7 := FALSE;
+   CV_6B1_402.SpareByte := 16#00;
+   V_6HC_241.ValueEGU := 0.0;
+   V_6HC_241.ManValueEGU := -1.0;
+   V_6HC_241.State := FALSE;
+   V_6HC_241.Alarm := FALSE;
+   V_6HC_241.Manual := FALSE;
+   V_6HC_241.Interlock := FALSE;
+   V_6HC_241.Spare4 := FALSE;
+   V_6HC_241.Spare5 := FALSE;
+   V_6HC_241.Spare6 := FALSE;
+   V_6HC_241.Spare7 := FALSE;
+   V_6HC_241.SpareByte := 16#00;
+   V_6HC_242.ValueEGU := 0.0;
+   V_6HC_242.ManValueEGU := -1.0;
+   V_6HC_242.State := FALSE;
+   V_6HC_242.Alarm := FALSE;
+   V_6HC_242.Manual := FALSE;
+   V_6HC_242.Interlock := FALSE;
+   V_6HC_242.Spare4 := FALSE;
+   V_6HC_242.Spare5 := FALSE;
+   V_6HC_242.Spare6 := FALSE;
+   V_6HC_242.Spare7 := FALSE;
+   V_6HC_242.SpareByte := 16#00;
+   V_6HC_245.ValueEGU := 0.0;
+   V_6HC_245.ManValueEGU := -1.0;
+   V_6HC_245.State := FALSE;
+   V_6HC_245.Alarm := FALSE;
+   V_6HC_245.Manual := FALSE;
+   V_6HC_245.Interlock := FALSE;
+   V_6HC_245.Spare4 := FALSE;
+   V_6HC_245.Spare5 := FALSE;
+   V_6HC_245.Spare6 := FALSE;
+   V_6HC_245.Spare7 := FALSE;
+   V_6HC_245.SpareByte := 16#00;
+   V_6HC_236.ValueEGU := 0.0;
+   V_6HC_236.ManValueEGU := -1.0;
+   V_6HC_236.State := FALSE;
+   V_6HC_236.Alarm := FALSE;
+   V_6HC_236.Manual := FALSE;
+   V_6HC_236.Interlock := FALSE;
+   V_6HC_236.Spare4 := FALSE;
+   V_6HC_236.Spare5 := FALSE;
+   V_6HC_236.Spare6 := FALSE;
+   V_6HC_236.Spare7 := FALSE;
+   V_6HC_236.SpareByte := 16#00;
+   V_6HC_235.ValueEGU := 0.0;
+   V_6HC_235.ManValueEGU := -1.0;
+   V_6HC_235.State := FALSE;
+   V_6HC_235.Alarm := FALSE;
+   V_6HC_235.Manual := FALSE;
+   V_6HC_235.Interlock := FALSE;
+   V_6HC_235.Spare4 := FALSE;
+   V_6HC_235.Spare5 := FALSE;
+   V_6HC_235.Spare6 := FALSE;
+   V_6HC_235.Spare7 := FALSE;
+   V_6HC_235.SpareByte := 16#00;
+   V_6HC_238.ValueEGU := 0.0;
+   V_6HC_238.ManValueEGU := -1.0;
+   V_6HC_238.State := FALSE;
+   V_6HC_238.Alarm := FALSE;
+   V_6HC_238.Manual := FALSE;
+   V_6HC_238.Interlock := FALSE;
+   V_6HC_238.Spare4 := FALSE;
+   V_6HC_238.Spare5 := FALSE;
+   V_6HC_238.Spare6 := FALSE;
+   V_6HC_238.Spare7 := FALSE;
+   V_6HC_238.SpareByte := 16#00;
+   V_6HC_239.ValueEGU := 0.0;
+   V_6HC_239.ManValueEGU := -1.0;
+   V_6HC_239.State := FALSE;
+   V_6HC_239.Alarm := FALSE;
+   V_6HC_239.Manual := FALSE;
+   V_6HC_239.Interlock := FALSE;
+   V_6HC_239.Spare4 := FALSE;
+   V_6HC_239.Spare5 := FALSE;
+   V_6HC_239.Spare6 := FALSE;
+   V_6HC_239.Spare7 := FALSE;
+   V_6HC_239.SpareByte := 16#00;
+   V_6HC_148.ValueEGU := 0.0;
+   V_6HC_148.ManValueEGU := -1.0;
+   V_6HC_148.State := FALSE;
+   V_6HC_148.Alarm := FALSE;
+   V_6HC_148.Manual := FALSE;
+   V_6HC_148.Interlock := FALSE;
+   V_6HC_148.Spare4 := FALSE;
+   V_6HC_148.Spare5 := FALSE;
+   V_6HC_148.Spare6 := FALSE;
+   V_6HC_148.Spare7 := FALSE;
+   V_6HC_148.SpareByte := 16#00;
+   V_6HC_249.ValueEGU := 0.0;
+   V_6HC_249.ManValueEGU := -1.0;
+   V_6HC_249.State := FALSE;
+   V_6HC_249.Alarm := FALSE;
+   V_6HC_249.Manual := FALSE;
+   V_6HC_249.Interlock := FALSE;
+   V_6HC_249.Spare4 := FALSE;
+   V_6HC_249.Spare5 := FALSE;
+   V_6HC_249.Spare6 := FALSE;
+   V_6HC_249.Spare7 := FALSE;
+   V_6HC_249.SpareByte := 16#00;
+   V_6HC_146.ValueEGU := 0.0;
+   V_6HC_146.ManValueEGU := -1.0;
+   V_6HC_146.State := FALSE;
+   V_6HC_146.Alarm := FALSE;
+   V_6HC_146.Manual := FALSE;
+   V_6HC_146.Interlock := FALSE;
+   V_6HC_146.Spare4 := FALSE;
+   V_6HC_146.Spare5 := FALSE;
+   V_6HC_146.Spare6 := FALSE;
+   V_6HC_146.Spare7 := FALSE;
+   V_6HC_146.SpareByte := 16#00;
+   V_6HC_243.ValueEGU := 0.0;
+   V_6HC_243.ManValueEGU := -1.0;
+   V_6HC_243.State := FALSE;
+   V_6HC_243.Alarm := FALSE;
+   V_6HC_243.Manual := FALSE;
+   V_6HC_243.Interlock := FALSE;
+   V_6HC_243.Spare4 := FALSE;
+   V_6HC_243.Spare5 := FALSE;
+   V_6HC_243.Spare6 := FALSE;
+   V_6HC_243.Spare7 := FALSE;
+   V_6HC_243.SpareByte := 16#00;
+   V_6HC_252.ValueEGU := 0.0;
+   V_6HC_252.ManValueEGU := -1.0;
+   V_6HC_252.State := FALSE;
+   V_6HC_252.Alarm := FALSE;
+   V_6HC_252.Manual := FALSE;
+   V_6HC_252.Interlock := FALSE;
+   V_6HC_252.Spare4 := FALSE;
+   V_6HC_252.Spare5 := FALSE;
+   V_6HC_252.Spare6 := FALSE;
+   V_6HC_252.Spare7 := FALSE;
+   V_6HC_252.SpareByte := 16#00;
+   Spare_2.ValueEGU := 0.0;
+   Spare_2.ManValueEGU := 0.0;
+   Spare_2.State := FALSE;
+   Spare_2.Alarm := FALSE;
+   Spare_2.Manual := FALSE;
+   Spare_2.Interlock := FALSE;
+   Spare_2.Spare4 := FALSE;
+   Spare_2.Spare5 := FALSE;
+   Spare_2.Spare6 := FALSE;
+   Spare_2.Spare7 := FALSE;
+   Spare_2.SpareByte := 16#00;
+   Spare_3.ValueEGU := 0.0;
+   Spare_3.ManValueEGU := 0.0;
+   Spare_3.State := FALSE;
+   Spare_3.Alarm := FALSE;
+   Spare_3.Manual := FALSE;
+   Spare_3.Interlock := FALSE;
+   Spare_3.Spare4 := FALSE;
+   Spare_3.Spare5 := FALSE;
+   Spare_3.Spare6 := FALSE;
+   Spare_3.Spare7 := FALSE;
+   Spare_3.SpareByte := 16#00;
+   Spare_4.ValueEGU := 0.0;
+   Spare_4.ManValueEGU := 0.0;
+   Spare_4.State := FALSE;
+   Spare_4.Alarm := FALSE;
+   Spare_4.Manual := FALSE;
+   Spare_4.Interlock := FALSE;
+   Spare_4.Spare4 := FALSE;
+   Spare_4.Spare5 := FALSE;
+   Spare_4.Spare6 := FALSE;
+   Spare_4.Spare7 := FALSE;
+   Spare_4.SpareByte := 16#00;
+   Spare_5.ValueEGU := 0.0;
+   Spare_5.ManValueEGU := 0.0;
+   Spare_5.State := FALSE;
+   Spare_5.Alarm := FALSE;
+   Spare_5.Manual := FALSE;
+   Spare_5.Interlock := FALSE;
+   Spare_5.Spare4 := FALSE;
+   Spare_5.Spare5 := FALSE;
+   Spare_5.Spare6 := FALSE;
+   Spare_5.Spare7 := FALSE;
+   Spare_5.SpareByte := 16#00;
+   Spare_6.ValueEGU := 0.0;
+   Spare_6.ManValueEGU := 0.0;
+   Spare_6.State := FALSE;
+   Spare_6.Alarm := FALSE;
+   Spare_6.Manual := FALSE;
+   Spare_6.Interlock := FALSE;
+   Spare_6.Spare4 := FALSE;
+   Spare_6.Spare5 := FALSE;
+   Spare_6.Spare6 := FALSE;
+   Spare_6.Spare7 := FALSE;
+   Spare_6.SpareByte := 16#00;
+
+END_DATA_BLOCK
+
+DATA_BLOCK "dbDigitalValvesSCADA"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+      V_6IN_334 : Byte;   //   Inline Homogenizer to C1 valve open/close
+      Spare_V_6IN_335 : Byte;   //   Iline Homogenizer to B1 valve open/close
+      V_6IN_333 : Byte;   //  Inline homogenizer ST bypass valve open/close
+      V_6A0_801 : Byte;   //  A0 MEW inlet valve open/close
+      V_6A0_325 : Byte;   //  A0 MEW supply valve open/close
+      V_6A0_312 : Byte;   //  MEW A0 bypass valve open/close
+      V_6A0_331 : Byte;   // MEW block supply valve to A0 open/close
+      Spare_5 : Byte;
+      Spare_8 : Byte;
+      Spare_10 : Byte;
+      V_6A0_313 : Byte;   //  A0 vessel outlet valve open/close
+      Spare_11 : Byte;
+      Spare_19 : Byte;
+      Spare_20 : Byte;
+      V_6A0_314 : Byte;   //  A0 to F-3A0-201 valve open/close
+      V_6A0_315 : Byte;   //  A0 to drain valve open/close
+      V_6A0_324 : Byte;   //  MEW A0 bypass line valve open/close
+      V_6A0_327 : Byte;   //  A0 vessel outlet valve open/close
+      V_6A0_306 : Byte;   //  A0 to drain, ST bypass valve open/close
+      V_6A0_304 : Byte;   //  A0 to drain through ST valve open/close
+      V_6A0_305 : Byte;   //  A0 to aceton drain valve open/close
+      V_6A0_111 : Byte;   //  A0 vessel aceton vent valve open/close
+      Spare_V_6A0_302 : Byte;   //  PRD line valve open/close
+      V_6A0_303 : Byte;   //  PRD line to A0 valve open/close
+      V_6A0_318 : Byte;   //  A0 MED supply valve open/close
+      V_6A1_801 : Byte;   //  A1 MEW inlet valve open/close
+      Spare_21 : Byte;   //  Spare (V-3A1-345)
+      Spare_22 : Byte;   //  Spare (V-3A1-346)
+      Spare_23 : Byte;   //  Spare (A1 MEW supply valve open/close)
+      Spare_24 : Byte;   //  Spare (A1 CIP supply valve open/close)
+      V_6B0_363 : Byte;   // C0 MED supply line valve open/close 
+      V_6B0_365 : Byte;   // B0 MED supply line valve open/close 
+      V_6B0_815 : Byte;   // B0 MED supply line valve open/close 
+      V_6B0_816 : Byte;   // B0 PW MED supply line valve open/close 
+      Spare_25 : Byte;   //  Spare (V-3A1-306)
+      V_6A1_333 : Byte;   //  A1 to C1 valve open/close
+      V_6A1_332 : Byte;   //  A1 to inline homogenizer valve open/close
+      V_6A1_312 : Byte;   //  A1 to drain through ST valve open/close
+      V_6A1_313 : Byte;   //  A1 to aceton drain valve open/close
+      V_6A1_314 : Byte;   //  A1 to drain, ST bypass valve open/close
+      V_6A1_330 : Byte;   //  F-3A0-201 drain valve open/close
+      V_6A1_331 : Byte;   //  A0 to A1 valve open/close
+      V_6A1_328 : Byte;   //  F-3A0-201 drain, ST bypass valve open/close
+      V_6A1_329 : Byte;   //  F-3A0-201 drain, ST bypass valve open/close
+      V_6A1_324 : Byte;   //  A0 to F-3A0-201 valve open/close
+      V_6A1_327 : Byte;   //  F-3A0-201 vent valve open/close
+      V_6A1_536 : Byte;   // MEW line block valve to A1 open/close
+      V_6A1_326 : Byte;   //  F-3A0-201  drain valve open/close
+      V_6A1_319 : Byte;   //  F-3A1-101  drain, ST bypass valve open/close
+      V_6A1_111 : Byte;   //  A1 vessel vent valve open/close
+      V_6A1_318 : Byte;   //  A1 inlet from A0 valve open/close
+      V_6A1_115 : Byte;   //  F-3A1-101 to aceton vent valve open/close
+      V_6A1_113 : Byte;   //  F-3A1-101 to vent valve open/close
+      V_6A1_322 : Byte;   //  F-3A1-101 drain valve open/close
+      V_6A1_321 : Byte;   //  F-3A1-101  drain valve open/close
+      V_6A1_309 : Byte;   //  A1 PRD outlet valve open/close
+      V_6A1_310 : Byte;   //  A1 to drain valve open/close
+      V_6A1_308 : Byte;   //  A1 outlet valve open/close
+      V_6A1_307 : Byte;   //  A1 MED 10 inlet valve open/close
+      V_6A1_342 : Byte;   //  A1 MED supply valve open/close
+      Spare_V_6A1_311 : Byte;   //  A1 inlet from D1 valve open/close
+      V_6B0_802 : Byte;   //  B0 fine dose valve open/close
+      Spare_26 : Byte;   //  Spare (V-3B0-356)
+      V_6B0_358 : Byte;   //   MEW supply B0 bypass valve open/close
+      V_6B0_360 : Byte;   //  B0 MEW supply valve open/close
+      V_6B0_357 : Byte;   //  B0 MEW supply valve open/close
+      Spare_27 : Byte;   //   Sapre (CIP supply line valve open/close)
+      V_6B0_801 : Byte;   //  B0 MEW inlet to SB1 valve open/close
+      V_6B0_807 : Byte;   //  M04 supply valve open/close
+      V_6B0_808 : Byte;   //  B0 outlet valve open/close
+      V_6B0_304 : Byte;   //  B0 PRD outlet line valve open/close
+      V_6B0_305 : Byte;   //  B0 to drain valve open/close
+      V_6B0_323 : Byte;   //  MEW supply bypass B0 valve open/close
+      V_6B0_806 : Byte;   //  B0 to M04, pump bypass valve open/close
+      V_6B0_804 : Byte;   //  B0 to P-3B0-101 valve open/close
+      V_6B0_809 : Byte;   //  B0 MEW supply to drain valve open/close
+      V_6B0_337 : Byte;   //  F-3B0-207 to drain through ST valve open/close
+      V_6B0_338 : Byte;   //  F-3B0-207 to F-3B0-208 valve open/close
+      V_6B0_335 : Byte;   //  F-3B0-207 to drain, ST bypass valve open/close
+      V_6B0_344 : Byte;   //  F-3B0-205 to drain through ST valve open/close
+      V_6B0_342 : Byte;   //  F-3B0-205 to drain, ST bypass valve open/close
+      V_6B0_327 : Byte;   //  F-3B0-210 pipe before to drain valve open/close
+      V_6B0_330 : Byte;   //  F-3B0-209 to drain through ST valve open/close
+      V_6B0_332 : Byte;   //  F-3B0-209 vent to drain valve open/close
+      V_6B0_328 : Byte;   //  F-3B0-209 to drain, ST bypass valve open/close
+      V_6B0_345 : Byte;   //  F-3B0-205 to F-3B0-206 valve open/close
+      V_6B0_803 : Byte;   //  MEW supply to F-3B0 filters
+      V_6B0_339 : Byte;   //  F-3B0-207 vent to drain valve open/close
+      V_6B0_331 : Byte;   //  F-3B0-209 to F-3B0-210 valve open/close
+      V_6B0_346 : Byte;   //  F-3B0-205 vent to drain valve open/close
+      V_6B0_308 : Byte;   //  B0 to drain, ST bypass valve open/close
+      Spare_28 : Byte;   //  Spare (B0 CIP supply valve open/close)
+      V_6B0_113 : Byte;   //  B0 vessel vent valve open/close
+      V_6B0_336 : Byte;   //  F-3B0-208 MEW supply valve open/close
+      V_6B0_343 : Byte;   //  F-3B0-206 MEW supply valve open/close
+      V_6B0_329 : Byte;   //  F-3B0-210 MEW supply valve open/close
+      V_6B0_325 : Byte;   //  F-3B0-201 vent to drain valve open/close
+      V_6B0_351 : Byte;   //  F-3B0-203 to drain through ST valve open/close
+      V_6B0_352 : Byte;   //  F-3B0-203 to F-3B0-204 valve open/close
+      V_6B0_350 : Byte;   //  F-3B0-204 MEW supply valve open/close
+      V_6B0_349 : Byte;   //  F-3B0-203 to drain, ST bypass valve open/close
+      V_6B0_318 : Byte;   //  PRD line from B0 to F-3B0-201 valve open/close
+      V_6B0_319 : Byte;   //  PRD line from B0 to filters valve open/close
+      V_6B0_317 : Byte;   //  PRD line from B0 to filters valve open/close
+      V_6B0_315 : Byte;   //  PRD line from B0 to filters valve open/close
+      V_6B0_316 : Byte;   //  PRD line from B0 to F-3B0-203 valve open/close
+      V_6B0_361 : Byte;   //  F-3B0-201 to drain through ST valve open/close
+      V_6B0_324 : Byte;   //  F-3B0-201 to F-3B0-202 valve open/close
+      V_6B0_322 : Byte;   //  F-3B0-202 MEW supply valve open/close
+      V_6B0_321 : Byte;   //  F-3B0-201 to drain, ST bypass valve open/close
+      V_6B0_353 : Byte;   //  F-3B0-203 vent to drain valve open/close
+      V_6B0_303 : Byte;   //  B0 outlet valve open/close
+      V_6B0_314 : Byte;   //  PRD line from B0 to F-3B0-205 valve open/close
+      V_6B0_312 : Byte;   //  PRD line from B0 to F-3B0-207 valve open/close
+      V_6B0_313 : Byte;   //  PRD line from B0 to filters valve open/close
+      V_6B0_311 : Byte;   //  PRD line to drain valve open/close
+      V_6B0_310 : Byte;   //  PRD line from B0 to F-3B0-209 valve open/close
+      V_6B0_355 : Byte;   //  B0 MED supply line valve open/close
+      V_6B0_306 : Byte;   //   B0 MED inlet valve open/close
+      IL_6B0_104 : Byte;   //  B0 vessel light
+      Spare_29 : Byte;   //  Spare (IL-3B1-104, B1 vessel light)
+      V_6B1_802 : Byte;   //  B1 MEW inlet to SB2 valve open/close
+      V_6B1_309 : Byte;   //  B1PRD outlet valve open/close
+      Spare_2 : Byte;   //  Spare (V-3B1-348)
+      V_6B1_366 : Byte;   // B1 PRD line to drain, ST bypass valve open/close
+      V_6B1_536 : Byte;   // MEW line to B1 valve open/close
+      V_6B1_537 : Byte;   // MEW line to VAC line valve open/close
+      V_6B1_355 : Byte;   //  B1 MEW supply valve open/close
+      Spare_30 : Byte;   // Spare ( B1 acetone supply valve open/close)
+      Spare_31 : Byte;   //  B1 CIP supply valve open/close
+      V_6B1_346 : Byte;   //  VC line to vacuum pumps valve open/close
+      V_6B1_305 : Byte;   //  B1 product inlet valve open/close
+      V_6B1_347 : Byte;   //  VC line to vacuum pumps valve open/close
+      Spare_34 : Byte;   //  spare (CIP supply valve open/close)
+      Spare_35 : Byte;   //  spare (Acetone supply valve open/close)
+      V_6B1_301 : Byte;   //  MEW supply to F-3B1-101 vent out valve open/close
+      Spare_36 : Byte;   //  spare( F-3B0-208 to drain, ST bypass valve open/close)
+      Spare_V_6B1_409 : Byte;   //  F-3B0-208 pipes to drain, ST bypass valve open/close
+      V_6B1_338 : Byte;   //  F-3B0-208 pipe after to drain valve open/close
+      V_6B1_406 : Byte;   //  F-3B0-208 vent to drain valve open/close
+      V_6B1_341 : Byte;   //  F-3B0-208 pipe before to drain valve open/close
+      Spare_V_6B1_396 : Byte;   //  F-3B0-206 pipes to drain, ST bypass valve open/close
+      V_6B1_398 : Byte;   //  F-3B0-206 pipe before to drain valve open/close
+      Spare_37 : Byte;   // spare (F-3B0-206 to drain, ST bypass valve open/close)
+      V_6B1_392 : Byte;   //  F-3B0-206 to B1 valve open/close
+      V_6B1_393 : Byte;   //  F-3B0-206 vent to drain valve open/close
+      V_6B1_401 : Byte;   //  F-3B0-208 to B1 valve open/close
+      Spare_V_6B1_400 : Byte;   //  F-3B0-208 to drain through ST valve open/close
+      V_6B1_399 : Byte;   //  F-3B0-206 pipe after to drain valve open/close
+      Spare_V_6B1_390 : Byte;   //  F-3B0-206 to drain through ST valve open/close
+      V_6B1_115 : Byte;   //  F-3B1-101 to acetone vent valve open/close
+      V_6B1_326 : Byte;   //  B1 vent to drain valve open/close
+      V_6B1_331 : Byte;   //  B1 inlet from F-3B0-204 valve open/close
+      V_6B1_330 : Byte;   //  B1 inlet from F-3B0-206 valve open/close
+      V_6B1_328 : Byte;   //  B1 vent outlet to drain valve open/close
+      V_6B1_329 : Byte;   //  B1 inlet from F-3B0-208 valve open/close
+      V_6B1_320 : Byte;   //  B1 to drain, ST bypass valve open/close
+      V_6B1_318 : Byte;   //  B1 to drain through ST valve open/close
+      V_6B1_319 : Byte;   //  B1 to aceton drain valve open/close
+      V_6B1_340 : Byte;   //  F-3B1-101 vent valve open/close
+      V_6B1_111 : Byte;   //  B1 vessel vent valve open/close
+      V_6B1_339 : Byte;   //  F-3B1-101 to drain valve open/close
+      V_6B1_113 : Byte;   //  F-3B1-101 to vent valve open/close
+      V_6B1_332 : Byte;   //  F-3B1-301 to drain, ST bypass valve open/close
+      V_6B1_333 : Byte;   //  F-3B1-301 to drain valve open/close
+      V_6B1_336 : Byte;   //  B1 to F-3B1-301 valve open/close
+      V_6B1_337 : Byte;   //  F-3B1-101 to drain, ST bypass valve open/close
+      V_6B1_335 : Byte;   //  F-3B1-301 to vacuum pumps valve open/close
+      V_6B1_334 : Byte;   //  F-3B1-301 to drain valve open/close
+      V_6B1_316 : Byte;   //  B1 inlet from C1/inline homogenizer valve open/close
+      V_6B1_315 : Byte;   //  B1 to P-3B1-101 valve open/close
+      V_6B1_314 : Byte;   //  PRD line to P-3SF-101 valve open/close
+      V_6B1_317 : Byte;   //  B1 inlet from F-3B0-202 valve open/close
+      V_6B1_310 : Byte;   //  B1 PRD line to drain valve open/close
+      V_6B1_308 : Byte;   //  B1 outlet valve open/close
+      V_6B1_373 : Byte;   //  F-3B0-202 to B1 valve open/close
+      V_6B1_375 : Byte;   //  F-3B0-202 vent valve open/close
+      Spare_V_6B1_374 : Byte;   //  F-3B0-202 to drain through ST valve open/close
+      V_6B1_801 : Byte;   //  B1 MEW inlet to SB1 valve open/close
+      V_6B1_356 : Byte;   //  B1 MED line supply valve open/close
+      V_6B1_307 : Byte;   //  B1 MED inlet valve open/close
+      Spare_V_6B1_377 : Byte;   //  F-3B0-202 to drain, ST bypass valve open/close
+      V_6B1_389 : Byte;   //  F-3B0-204 pipe after to drain valve open/close
+      V_6B1_388 : Byte;   //  F-3B0-204 pipe before to drain valve open/close
+      Spare_V_6B1_386 : Byte;   //  F-3B0-204 pipes to drain, ST bypass valve open/close
+      Spare_38 : Byte;   //  Spare (F-3B0-204 to drain, ST bypass valve open/close)
+      V_6B1_380 : Byte;   //  F-3B0-202 pipe after to drain valve open/close
+      Spare_39 : Byte;   //  Spare (F-3B0-202 to drain, ST bypass valve open/close)
+      V_6B1_379 : Byte;   //  F-3B0-202 pipe before to drain valve open/close
+      V_6B1_383 : Byte;   //  F-3B0-204 to B1 valve open/close
+      V_6B1_391 : Byte;   //  F-3B0-204 vent to drain valve open/close
+      Spare_V_6B1_382 : Byte;   //  F-3B0-204 to drain through ST valve open/close
+      V_6B1_313 : Byte;   //  B1 PRD line to drain through ST valve open/close
+      V_6B1_344 : Byte;   //  B1 circulation line valve open/close
+      V_6B1_312 : Byte;   //  B1 PRD line to drain, ST bypass valve open/close
+      V_6B1_343 : Byte;   //  PRD recirculation line E0/B1 valve open/close
+      V_6B1_311 : Byte;   //  P-3B1-101 inlet valve open/close
+      V_6B1_342 : Byte;   //  P-3B1-101 to E0 valve open/close
+      Spare_40 : Byte;   //  Spare (PRD line to drain, ST bypass valve open/close)
+      Spare_46 : Byte;   //  Spare (PRD line to drain through ST valve open/close)
+      V_6C0_802 : Byte;   //  C0 MEW inlet to SB2 valve open/close
+      V_6C0_321 : Byte;   //  C0 MEW supply valve open/close
+      V_6C0_307 : Byte;   //  F-3C0-202  drain valve open/close
+      V_6C0_322 : Byte;   //  C0 MEW supply bypass valve open/close
+      V_6C0_811 : Byte;   // MED supply valve to C0 valve open/close
+      V_6C0_332 : Byte;   // MEW block supply valve open/close
+      Spare_47 : Byte;   //  Spare (WFI line supply valve open/close)
+      V_6C0_319 : Byte;   //  C0 MED line supply valve open/close
+      Spare_48 : Byte;   //  Spare (CIP line supply valve open/close)
+      V_6C0_317 : Byte;   //  C0 to drain, ST bypass valve open/close
+      V_6C0_313 : Byte;   //  C0  PRD line to F-3C0-201 valve open/close
+      V_6C0_314 : Byte;   //  C0 to drain through ST valve open/close
+      V_6C0_323 : Byte;   //  MEW supply bypass line valve open/close
+      V_6C0_312 : Byte;   //  C0 outlet valve open/close
+      V_6C0_327 : Byte;   //  C0 outlet valve open/close
+      V_6C0_809 : Byte;   //  C0 MEW supply to drain valve open/close
+      Spare_49 : Byte;   //  Spare (C0 WFI supply valve open/close)
+      Spare_50 : Byte;   //  Spare (C0 CIP supply valve open/close)
+      V_6C0_113 : Byte;   //  C0 vessel vent valve open/close
+      V_6C0_326 : Byte;   //  F-3C0-202 MEW supply valve open/close
+      V_6C0_308 : Byte;   //  F-3C0-201 to drain through ST valve open/close
+      V_6C0_306 : Byte;   //  F-3C0-201 to drain, ST bypass valve open/close
+      V_6C0_309 : Byte;   //  F-3C0-201 to F-3C0-202 valve open/close
+      V_6C0_310 : Byte;   //  F-3C0-201 vent to drain valve open/close
+      V_6C0_801 : Byte;   //  C0 MEW inlet to SB1 valve open/close
+      V_6C0_315 : Byte;   //  C0 MED inlet valve open/close
+      IL_6C0_104 : Byte;   //  C0 vessel light
+      Spare_32 : Byte;   //  Spare (IL-3C1-104, C1 vessel light)
+      V_6C1_353 : Byte;   //  C1 inlet from F-3B0-210 valve open/close
+      V_6C1_351 : Byte;   //  P-3C1-102 to drain valve open/close
+      V_6C1_802 : Byte;   //  C1 MEW inlet to SB2 valve open/close
+      V_6C1_380 : Byte;   // PRD line C1 to E0 block valve open Close
+      V_6C1_382 : Byte;   // PRD line FL5 to C1  block valve open Close
+      V_6C1_536 : Byte;   // MEW line to C1 valve open/close
+      V_6C1_546 : Byte;   // Block valve after P-2C1-102 to E0 open/close
+      V_6C1_547 : Byte;   // Block valve from C1 to P-2C1-102 open/close
+      Spare_51 : Byte;   //  Sapre (Acetone line supply valve open/close)
+      Spare_52 : Byte;   //  Spare (V-3C1-301)
+      V_6C1_319 : Byte;   //  F-3B0-210 to C1 valve open/close
+      Spare_V_6C1_311 : Byte;   //  F-3B0-210 to drain, ST bypass valve open/close
+      Spare_V_6C1_364 : Byte;   //  F-3B0-210 to drain through ST valve open/close
+      Spare_53 : Byte;   // Spare ( F-3B0-210 to drain, ST bypass valve open/close)
+      V_6C1_322 : Byte;   //  F-3B0-210 pipe after to drain valve open/close
+      V_6C1_363 : Byte;   //  F-3B0-210 vent to drain valve open/close
+      V_6C1_316 : Byte;   //  C1 inlet from F-3C0-202 valve open/close
+      V_6C1_317 : Byte;   //  C1 inlet from inline homogenizer valve open/close
+      V_6C1_115 : Byte;   //  F-3C1-101 to acetone vent valve open/close
+      V_6C1_309 : Byte;   //  C1 to drain, ST bypass valve open/close
+      Spare_V_6C1_344 : Byte;   //  PRD line valve open/close
+      V_6C1_347 : Byte;   //  PRD line valve open/close
+      V_6C1_345 : Byte;   //  PRD line valve open/close
+      V_6C1_346 : Byte;   //  PRD line to P-3C1-102 inlet valve open/close
+      V_6C1_308 : Byte;   //  C1 to aceton drain valve open/close
+      V_6C1_307 : Byte;   //  C1 to drain through ST valve open/close
+      V_6C1_306 : Byte;   //  C1 inlet from A1 valve open/close
+      V_6C1_305 : Byte;   //  C1 MED line inlet valve open/close
+      V_6C1_324 : Byte;   //  PRD outlet from C1 valve open/close
+      V_6C1_325 : Byte;   //  C1 to drain valve open/close
+      V_6C1_323 : Byte;   //  C1 outlet valve open/close
+      V_6C1_318 : Byte;   //  F-3C1-101 to drain, ST bypass valve open/close
+      V_6C1_111 : Byte;   //  C1 to F-3C1-101 valve open/close
+      V_6C1_113 : Byte;   //  F-3C1-101 vent valve open/close
+      V_6C1_321 : Byte;   //  F-3C1-101 drain valve open/close
+      V_6C1_320 : Byte;   //  F-3C1-101 drain valve open/close
+      V_6C1_326 : Byte;   //  C1 MED supply valve open/close
+      V_6C1_327 : Byte;   //  P-3C0-202 to C1 valve open/close
+      V_6C1_801 : Byte;   //  C1 MEW inlet to SB1 valve open/close
+      Spare_V_6C1_330 : Byte;   //  F-3C0-202 drain, ST bypass valve open/close
+      Spare_54 : Byte;   //  Spare (F-3C0-202 drain, ST bypass valve open/close)
+      V_6C1_335 : Byte;   //  F-3C0-202 vent valve open/close
+      V_6C1_333 : Byte;   //  F-3C0-202 drain valve open/close
+      Spare_55 : Byte;   //  Spare (F-3C0-202 drain through ST valve open/close)
+      Spare_V_6D0_326 : Byte;   //  D0 MEW supply bypass valve open/close
+      Spare_V_6D0_327 : Byte;   //  D0 MEW supply valve open/close
+      Spare_V_6D0_330 : Byte;   // MEW block supply valve to D0 open/close
+      V_6AC_550 : Byte;   // AC line to A1 valve open/close
+      V_6AC_551 : Byte;   // AC line to INL valve open/close
+      Spare_V_6AC_552 : Byte;   // AC line to D1 valve open/close
+      V_6AC_553 : Byte;   // AC line to E0 valve open/close
+      Spare_56 : Byte;   //  Spare (Acetone line supply valve open/close)
+      Spare_V_6D0_314 : Byte;   //  D0 to drain through ST valve open/close
+      Spare_V_6D0_315 : Byte;   //  D0 to acetone drain valve open/close
+      Spare_V_6D0_306 : Byte;   //  D0 to drain valve open/close
+      Spare_V_6D0_304 : Byte;   //  D0 outlet valve open/close
+      Spare_V_6D0_305 : Byte;   //  D0 to A0/D1 valve open/close
+      Spare_V_6D0_316 : Byte;   //  D0 to drain, ST bypass valve open/close
+      Spare_V_6D0_328 : Byte;   //  D0 MEW supply bypass valve open/close
+      Spare_V_6D0_303 : Byte;   //  D0 to A0 valve open/close
+      Spare_V_6D0_302 : Byte;   //  D0 to D1 valve open/close
+      Spare_V_6D0_801 : Byte;   //  D0 MEW inlet valve open/close
+      Spare_V_6D0_111 : Byte;   //  D0 to acetone vent valve open/close
+      Spare_V_6D0_319 : Byte;   //  D0 MED supply valve open/close
+      Spare_V_6D0_307 : Byte;   //  D0 MED inlet valve open/close
+      Spare_V_6D1_801 : Byte;   //  D1 MEW inlet valve open/close
+      Spare_V_6D1_538 : Byte;   // MEW line to D1 valve open/close
+      Spare_V_6D1_302 : Byte;   //  D1 outlet valve open/close
+      Spare_57 : Byte;   // Spare ( MEW line supply valve open/close)
+      Spare_58 : Byte;   // Spare ( CIP line supply valve open/close)
+      Spare_59 : Byte;   //  Spare (Acetone line supply valve open/close)
+      Spare_3 : Byte;   //  Spare (V-3D1-301)
+      Spare_V_6D1_308 : Byte;   //  D1 to drain, ST bypass valve open/close
+      Spare_V_6D1_309 : Byte;   //  D1 to drain through ST valve open/close
+      Spare_V_6D1_305 : Byte;   //  D1 to drain valve open/close
+      Spare_V_6D1_304 : Byte;   //  D1 to A1 valve open/close
+      Spare_V_6D1_310 : Byte;   //  D1 to acetone drain valve open/close
+      Spare_V_6D1_111 : Byte;   //  D1 vent valve open/close
+      Spare_V_6D1_113 : Byte;   //  F-3D1-101 vent valve open/close
+      Spare_V_6D1_314 : Byte;   //  F-3D1-101 drain valve open/close
+      Spare_V_6D1_311 : Byte;   //  F-3D1-101 drain, ST bypass valve open/close
+      Spare_V_6D1_115 : Byte;   //  F-3D1-101 acetone vent valve open/close
+      Spare_V_6D1_313 : Byte;   //  F-3D1-101 drain valve open/close
+      Spare_V_6D1_303 : Byte;   //  D1 MED inlet valve open/close
+      Spare_V_6D1_315 : Byte;   //  D1 MED supply valve open/close
+      V_6DR_202 : Byte;   //  Conductivity transmitter bypass valve open/close
+      V_6DR_204 : Byte;   //  Drain through conductivity transmitter valve open/close
+      V_6DR_203 : Byte;   //  Drain through conductivity transmitter valve open/close
+      V_6E0_802 : Byte;   //  E0 MEW inlet to SB2 valve open/close
+      V_6E0_322 : Byte;   //  MEW supply bypass E0 valve open/close
+      V_6E0_801 : Byte;   //  E0 MEW inlet to SB1 valve open/close
+      V_6E0_502 : Byte;   // E0 product inlet valve open/close
+      V_6E0_539 : Byte;   // MEW line to E0 valve open/close
+      Spare_12 : Byte;   //  Spare (V-3E0-301)
+      V_6E0_307 : Byte;   //  E0 product supply valve open/close
+      V_6E0_309 : Byte;   //  E0 product supply from filter dryer valve open/close
+      V_6E0_308 : Byte;   //  E0 product supply from scalping filter valve open/close
+      V_6E0_319 : Byte;   //  E0 drain through ST valve open/close
+      IL_6E0_104 : Byte;   //  E0 vessel light
+      V_6E0_345 : Byte;   //   Drain through ST valve open/close
+      V_6E0_313 : Byte;   //  E0 to drain, ST bypass valve open/close
+      V_6E0_314 : Byte;   //  E0 to acetone drain valve open/close
+      V_6E0_306 : Byte;   //  E0 to drain valve open/close
+      V_6E0_346 : Byte;   //  Drain ST bypass valve open/close
+      V_6E0_305 : Byte;   //  E0 to P-3E0-101 valve open/close
+      Spare_60 : Byte;   //  Spare (E0 MEW supply valve open/close)
+      V_6E0_323 : Byte;   //  E0 acetone supply valve open/close
+      Spare_61 : Byte;   //  Spare (E0 CIP supply valve open/close)
+      V_6E0_304 : Byte;   //  E0 outlet valve open/close
+      V_6E0_321 : Byte;   //  E0 MED supply valve open/close
+      V_6E0_303 : Byte;   //  E0 MED inlet valve open/close
+      V_6E0_311 : Byte;   //  E0 PRD line from B1 valve open/close
+      V_6E0_310 : Byte;   //  E0 PRD line from B1 valve open/close
+      V_6E0_312 : Byte;   //  E0 product supply from P-3E0-101 recirculation line valve open/close
+      V_6E0_316 : Byte;   //  F-3E0-101 to drain, ST bypass valve open/close
+      V_6E0_111 : Byte;   //  E0 vent valve open/close
+      V_6E0_115 : Byte;   //  F-3E0-101 acetone vent valve open/close
+      V_6E0_315 : Byte;   //  E0 product inlet valve open/close
+      V_6E0_113 : Byte;   //  F-3E0-101 vent valve open/close
+      V_6E0_318 : Byte;   //  F-3E0-101 vent valve open/close
+      V_6E0_317 : Byte;   //  F-3E0-101 to drain valve open/close
+      V_6E0_501 : Byte;   // PRD line from E0 to C1 to drain Bypass ST valve open/close
+      V_6E0_511 : Byte;   // PRD line from E0 to C1 to drain through ST valve open/close
+      V_6E0_530 : Byte;   // PRD line from E0 to C1 to drain valve open/close
+      Spare_62 : Byte;   //  Spare (CIP supply line valve open/close)
+      V_6FD_537 : Byte;   // MEW line to filter dryer valve open/close
+      V_6FD_306 : Byte;   //  Filter dryer acetone drain valve open/close
+      Spare_V_6FD_511 : Byte;   //  Filter dryer N2 supply bypass, valve open/close
+      V_6FD_305 : Byte;   //  Fiter dryer to drain through ST valve open/close
+      Spare_V_6FD_503 : Byte;   //  Filter dryer N2 supply valve open/close
+      V_6FD_363 : Byte;   //  MEW supply to F-3FD filters valve open/close
+      Spare_63 : Byte;   //  Spare (Acetone supply line valve open/close)
+      V_6FD_362 : Byte;   //  Filter dryer MEW supply valve open/close
+      Spare_64 : Byte;   //  Spare (V-3FD-504)
+      V_6FD_505 : Byte;   //  MEW supply to F-3FD-403 valve open/close
+      V_6FD_329 : Byte;   //  Filter dryer MED supply line valve open/close
+      V_6FD_531 : Byte;   //  F-3FD-403 vent valve open/close
+      V_6FD_330 : Byte;   //  Filter dryer MED supply valve open/close
+      Spare_65 : Byte;   //  Spare (V-3FD-530)
+      Spare_66 : Byte;   //  Spare (V-3FD-524)
+      V_6FD_512 : Byte;   //  F-3FD-404 CA inlet valve open/close
+      Spare_17 : Byte;   //  Spare (V-3FD-518)
+      V_6FD_525 : Byte;   //  F-3FD-403 drain valve open/close
+      V_6FD_519 : Byte;   //  F-3FD-403 drain, ST bypass valve open/close
+      V_6FD_513 : Byte;   //  F-3FD-403 N2 inlet valve open/close
+      V_6FD_364 : Byte;   //  Filter dryer drain valve open/close
+      V_6FD_307 : Byte;   //  Filter dryer to P-3FD-101 valve open/close
+      V_6FD_346 : Byte;   //  MEW supply line valve open/close
+      V_6FD_113 : Byte;   //  F-3FD-101 vent valve open/close
+      V_6FD_311 : Byte;   //  F-3FD-101 vent valve open/close
+      V_6FD_310 : Byte;   //  F-3FD-101 drain valve open/close
+      V_6IN_510 : Byte;   // PRD line from INL to C1,B1 to drain Bypass ST valve open/close
+      V_6IN_512 : Byte;   // RD line from INL to C1;B1 to drain through ST valve open/close
+      V_6FD_111 : Byte;   //  Filter dryer vent valve open/close
+      V_6FD_115 : Byte;   //  F-3FD-101 acetone vent valve open/close
+      V_6FD_309 : Byte;   //  F-3FD-101 drain, STbypass valve open/close
+      V_6FD_347 : Byte;   //  Filter dryer PRD line valve open/close
+      V_6FD_308 : Byte;   //  Filter dryer MED supply valve open/close
+      V_6FD_801 : Byte;   //  Filter dryer MEW inlet valve open/close
+      V_6FD_320 : Byte;   //  Drain line ST bypass valve open/close
+      V_6FD_319 : Byte;   //  Filter dryer PRD line to F-3FD-301 valve open/close
+      V_6FD_322 : Byte;   //  Filter dryer PRD supply valve open/close
+      V_6FD_323 : Byte;   //  PRD supply line valve open/close
+      V_6FD_321 : Byte;   //  Filter dryer outlet valve open/close
+      V_6FD_325 : Byte;   //  PRD line to drain through ST valve open/close
+      V_6FD_326 : Byte;   //  Filter dryer side outlet valve open/close
+      V_6FD_324 : Byte;   //  Filter dryer to drain, ST bypass valve open/close
+      V_6FD_318 : Byte;   //  F-3FD-301 to drain valve open/close
+      V_6FD_317 : Byte;   //  F-3FD-301 to drain valve open/close
+      V_6FD_316 : Byte;   //  F-3FD-301 to drain, STbypas valve open/close
+      V_6FD_312 : Byte;   //  F-3FD-301 to vent valve open/close
+      LG_6FD_806 : Byte;   //  Filter dryer light
+      V_6FD_602 : Byte;   //  Filter dryer MED supply valve open/close
+      V_6FD_603 : Byte;   //  Filter dryer MED supply valve open/close
+      V_6IN_509 : Byte;   // PRD line from FL5 to E0 to drain Bypass ST valve open/close
+      V_6IN_511 : Byte;   // PRD line from FL5 to E0 to drain through ST valve open/close
+      V_6IN_530 : Byte;   // PRD line from FL5 to E0 to drain valve open/close
+      V_6IN_536 : Byte;   // MEW line to INL valve open/close
+      Spare_67 : Byte;   //  Spare (Inline homogenizer drain, ST bypass valve open/close)
+      Spare_68 : Byte;   // Spare ( Inline homogenizer to drain through ST valve open/close)
+      V_6IN_351 : Byte;   //  Inline homogenizer MEW inlet valve open/close
+      V_6SF_312 : Byte;   //  Scalping filter to drain through ST valve open/close
+      V_6SF_313 : Byte;   //  Scalping filter to acetone drain valve open/close
+      V_6ME_143 : Byte;   // N2 supply to acetone line valve open/close
+      V_6ME_319 : Byte;   // MEW block supply valve open/close
+      Spare_V_6ME_320 : Byte;   // MEW block supply valve open/close
+      V_6AC_555 : Byte;   // Acetone inlet valve open/close
+      V_6SF_319 : Byte;   //  Scalping filter agitator to drain valve open/close
+      Spare_69 : Byte;   //  Spare (V-3SF-301)
+      V_6SF_302 : Byte;   //  Scalping filter MED supply valve open/close
+      V_6SF_801 : Byte;   //  Scalping filter MEW inlet valve open/close
+      LG_6SF_806 : Byte;   //  Scalping filter light
+      V_6SF_113 : Byte;   //  F-3SF-101 vent valve open/close
+      V_6SF_115 : Byte;   //  F-3SF-101 acetone vent valve open/close
+      V_6SF_314 : Byte;   //  F-3SF-101 to drain, ST bypass valve open/close
+      V_6SF_316 : Byte;   //  F-3SF-101 vent valve open/close
+      V_6SF_111 : Byte;   //  Scalping filter to F-3SF-101 valve open/close
+      V_6SF_315 : Byte;   //  F-3SF-101 to drain valve open/close
+      V_6SF_303 : Byte;   //  PRD supply line from B1 valve open/close
+      V_6SF_304 : Byte;   //  Scalping filter to P-3SF-101 valve open/close
+      V_6SF_309 : Byte;   //  Scalping filter side outlet valve open/close
+      V_6SF_306 : Byte;   //  Scalping filter drain, ST bypass valve open/close
+      V_6SF_310 : Byte;   //  PRD line drain, ST bypass valve open/close
+      V_6SF_305 : Byte;   //  PRD line drain through ST valve open/close
+      V_6SF_307 : Byte;   //  Scalping filter product supply from B1 valve open/close
+      V_6SF_308 : Byte;   //  Product supply from B1 bypass scalping filter valve open/close
+      Spare_70 : Byte;   //  Spare (MED supply to skid line 10 valve open/close)
+      V_6ME_133 : Byte;   //  MED supply to FD/Sf line 2 valve open/close
+      V_6ME_121 : Byte;   //  MEW media supply line 8 valve open/close
+      V_6ME_122 : Byte;   //  MEW media supply line 7 valve open/close
+      V_6ME_124 : Byte;   //  Media header PW supply from loop pressure release valve open/close
+      V_6ME_125 : Byte;   //  Media header PW supply from loop valve open/close
+      Spare_V_6ME_129 : Byte;   //  Media header PW supply from loop valve open/close
+      V_6ME_102 : Byte;   //  Media header PS supply to drain valve open/close
+      V_6ME_132 : Byte;   //  Media header PS inlet to T-3ME-101 valve open/close
+      V_6ME_103 : Byte;   //  T-3ME-101 to vent valve open/close
+      V_6ME_105 : Byte;   //  T-3ME-101 to drain valve open/close
+      V_6ME_131 : Byte;   //  T-3ME-101 PS outlet valve open/close
+      V_6ME_120 : Byte;   //  T-3ME-101 PS supply to F-3ME-401 valve open/close
+      V_6ME_101 : Byte;   //  T-3ME-101 to PS supply valve open/close
+      V_6ME_128 : Byte;   //  T-3ME-101 to PS supply valve open/close
+      V_6ME_123 : Byte;   //  Media header WFI supply from loop pressure release valve open/close
+      V_6ME_127 : Byte;   //  Media header WFI supply from loop valve open/close
+      V_6ME_134 : Byte;   //  Media header MED to MEW valve open/close
+      Spare_V_6ME_130 : Byte;   //  Media header WFI supply from loop valve open/close
+      V_6ME_110 : Byte;   //  MED line drain valve open/close
+      V_6ME_126 : Byte;   //  Media header WFI supply to B0/C0 valve open/close
+      V_6ME_533 : Byte;   // MEW supply line after A1 split block valve open/close
+      V_6ME_115 : Byte;   //  N2 supply to media header valve open/close
+      V_6ME_117 : Byte;   //  CA supply to media header valve open/close
+      V_6ME_113 : Byte;   //  MED supply to line 9 valve open/close
+      V_6ME_116 : Byte;   //  F-3ME-401 CA/N2 inlet valve open/close
+      V_6ME_107 : Byte;   //  F-3ME-401 vent valve open/close
+      V_6ME_106 : Byte;   //  F-3ME-401 CA/N2 outlet valve open/close
+      V_6ME_111 : Byte;   //  MED drain valve open/close
+      V_6ME_108 : Byte;   //  MED drain, ST bypass valve open/close
+      V_6ME_109 : Byte;   //  MED drain, ST bypass valve open/close
+      V_6ME_530 : Byte;   // MEW supply line after E0 split block valve open/close
+      Spare_V_6ME_531 : Byte;   // MEW supply line after D1 split block valve open/close
+      V_6ME_532 : Byte;   // MEW supply line after INL split block valve open/close
+      V_6IN_358 : Byte;   //  Inline homogenizer seal pot to drain valve open/close
+      V_6IN_352 : Byte;   //  Inline homogenizer seal pot PS inlet valve open/close
+      V_6IN_357 : Byte;   //  Inline homogenizer seal pot outlet valve open/close
+      V_6IN_355 : Byte;   //  Inline homogenizer seal pot outlet valve open/close
+      V_6IN_356 : Byte;   //  Inline homogenizer seal pot to drain valve open/close
+      SVF_5FD_804 : Byte;   //  Filter dryer agitator lower
+      SVF_5FD_801 : Byte;   //  Filter dryer mechanical seal CA purge enable
+      V_6A1_352 : Byte;   //  A1 seal pot PS inlet valve open/close
+      V_6A1_356 : Byte;   //  A1 seal pot to drain valve open/close
+      V_6A1_357 : Byte;   //  A1 seal pot outlet valve open/close
+      V_6A1_358 : Byte;   //  A1 seal pot to drain valve open/close
+      V_6A1_355 : Byte;   //  A1 seal pot outlet valve open/close
+      V_6ME_534 : Byte;   // MEW supply line after C1 split block valve open/close
+      V_6ME_535 : Byte;   // MEW supply line after B1 split block valve open/close
+      Spare_V_6IN_349 : Byte;   //  Inline homogenizer product inlet from A1 valve open/close
+      V_6IN_350 : Byte;   //  Inline homogenizer product inlet from C1 valve open/close
+      V_6IN_348 : Byte;   //  Inline homogenizer seal pot PS supply to drain valve open/close
+      V_6ME_114 : Byte;   //  F-3ME-401 to drain valve open/close
+      V_6SF_602 : Byte;   //  Scalping filter MED supply valve open/close
+      V_6SF_363 : Byte;   //  MEW supply to F-3SF-101 vent out valve open/close
+      V_6SF_362 : Byte;   //  Scalping filter MEW supply valve open/close
+      V_6FD_805 : Byte;   //  Filter dryer recirculation line to B1 valve open/close
+      V_6FD_806 : Byte;   //  Filter dryer top outlet valve open/close
+      V_6SF_805 : Byte;   //  Scalping filter to drain valve open/close
+      V_6FD_357 : Byte;   //  Filter dryer agitator SIP inlet valve open/close
+      V_6ME_536 : Byte;   // MEW supply line after VAC split block valve open/close
+      V_6IN_359 : Byte;   //  Inline homogenizer seal pot to drain through ST valve open/close
+      V_6ME_537 : Byte;   // MEW supply line after FD split block valve open/close
+      V_6ME_538 : Byte;   // MEW supply line after SF split block valve open/close
+      V_6B1_501 : Byte;   //  Liquid separator coolling water inlet valve open/close
+      SVF_5FD_803 : Byte;   //  Filter dryer agitator raise
+      V_6A1_362 : Byte;   //  A1 seal pot PS inlet to drain valve open/close
+      V_6B0_401 : Byte;   //  B0 outlet to drain through ST valve open/close
+      V_6B0_404 : Byte;   //  P-3B0-101 to drain valve open/close
+      V_6B1_412 : Byte;   //  B1 MED supply to drain valve open/close
+      V_6B1_413 : Byte;   //  B1 MED supply valve open/close
+      V_6B1_414 : Byte;   //  B1 PRD outlet line valve open/close
+      V_6B1_415 : Byte;   //  PRD line drain valve open/close
+      V_6B1_416 : Byte;   //  E0 product supply from B1 valve open/close
+      V_6B1_417 : Byte;   //  B1 MEW supply valve open/close
+      V_6B1_418 : Byte;   //  B1 MED supply valve open/close
+      V_6B1_601 : Byte;   //  B1 vent outlet to drain valve open/close
+      V_6B1_602 : Byte;   //  B1 FD product supply to drain valve open/close
+      Spare_71 : Byte;   //  Spare (F-3C0 filters MEW supply to drain valve open/close)
+      V_6C0_401 : Byte;   //  C0 outlet to drain through ST valve open/close
+      V_6C1_401 : Byte;   //  B1 product supply from C1/IH valve open/close
+      V_6C1_601 : Byte;   //  C1 to B1 product supply to drain valve open/close
+      V_6E0_350 : Byte;   //  E0 MED supply valve open/close
+      V_6E0_351 : Byte;   //  E0 MED supply to drain valve open/close
+      V_6E0_352 : Byte;   //  E0 MED supply valve open/close
+      V_6E0_601 : Byte;   //  E0 SF product supply to drain valve open/close
+      V_6E0_602 : Byte;   //  E0 B1 product supply to drain valve open/close
+      V_6FD_411 : Byte;   //  Filter dryer product to P-3FD-102 valve open/close
+      Spare_72 : Byte;   //  Spare
+      V_6FD_413 : Byte;   //  Filter dryer PRD outlet line drain valve open/close
+      V_6FD_417 : Byte;   //  E0 scalper filter product supply valve open/close
+      V_6FD_420 : Byte;   //  F-3FD filters MEW supply valve open/close
+      V_6IN_364 : Byte;   //  Inline homogenizer to B1/C1 valve open/close
+      V_6IN_365 : Byte;   //  Inline homogenizer outlet valve open/close
+      V_6SF_411 : Byte;   //  Scalping filter PRD outlet line drain valve open/close
+      V_6SF_415 : Byte;   //  P-3SF-101 product supply FD/E0 to drain valve open/close
+      V_6SF_416 : Byte;   //  P-3SF-101 product supply to FD/E0 valve open/close
+      V_6SF_603 : Byte;   //  P-3B1-101 product outlet to drain valve open/close
+      V_6SF_537 : Byte;   // MEW line to scalping filter valve open/close
+      XA_6SF_001 : Byte;   //  Scalping filter audible alarm
+      XA_6FD_001 : Byte;   //  Filter dryer audible alarm
+      Spare_MB_6FD_001 : Byte;   //  Filter dryer tilt motor brake
+      V_6ME_135 : Byte;   //  F-3ME-401 inlet valve open/close
+      V_6ME_136 : Byte;   //  T-3ME-101 pipe after to sampling valve open/close
+      V_6ME_137 : Byte;   //  Media header WFI supply to drain valve open/close
+      V_6ME_138 : Byte;   //  Media header PW supply to drain valve open/close
+      V_6ME_140 : Byte;   //  PS media supply line 20 valve open/close
+      V_6ME_149 : Byte;   //  CA/N2 supply to PS line valve open/close
+      PCV_6ME_102_Z : Byte;   // MH Air supply
+      V_6B1_603 : Byte;   //  Filter dryer PRD supply to B1 valve open/close
+      SVF_6SF_101 : Byte;   //  Spare (D1 cip supply valve open/close)
+      Spare_74 : Byte;   //  Spare (D1 AC supply valve open/close)
+      V_6E0_820 : Byte;   //  P-3E0-101 On/Off
+      V_6SF_820 : Byte;   //  P-3SF-101 On/Off
+      V_6B1_820 : Byte;   //  P-3B1-101 On/Off
+      V_6B1_419 : Byte;   //  PS supply line valve open/close
+      V_6FD_820 : Byte;   //  P-3FD-101 On/Off
+      V_6FD_823 : Byte;   //  P-3FD-102 On/Off
+      SVF_6FD_802 : Byte;   //  Filter dryer vibratory motor on/off
+      IL_6FD_104 : Byte;   //  FD movement signalization
+      Spare_V_6ME_118 : Byte;   //  F-3ME-401 CA/N2 inlet valve open/close
+      WFI_Hot_Req : Byte;   //  Request for hot process WFI
+      WFI_Cold_Req : Byte;   //  Request for cold process WFI
+      Spare_75 : Byte;   // Spare ( Request for CIP WFI (hot))
+      PW_Req : Byte;   //  Request for PW
+      V_6AC_159 : Byte;   // Acetone supply for grade C block valve open/close
+      V_6AC_158 : Byte;   // Acetone supply for grade B block valve open/close
+      V_6ME_362 : Byte;   // MEW line to steam trap valve open/close
+      V_6ME_139 : Byte;   // MEW supply line to BO valve open/close
+      V_6ME_141 : Byte;   // MEW supply line valve open/close
+      Spare_V_6C0_534 : Byte;   // After F-2C0-202 to drain through ST valve open/close
+      V_6C0_540 : Byte;   // Before F-2C0-201 to drain through ST valve open/close
+      V_6AC_546 : Byte;   // AC line to scalping filter valve open/close
+      V_6AC_547 : Byte;   // AC line to filter dryer valve open/close
+      V_6AC_548 : Byte;   // AC line to B1 valve open/close
+      V_6AC_549 : Byte;   // AC line to C1 valve open/close
+      V_6B0_810 : Byte;   //  F-3B0-209 to drain valve open/close
+      V_6B0_811 : Byte;   //  F-3B0-207 to drain valve open/close
+      V_6B0_812 : Byte;   //  F-3B0-205 to drain valve open/close
+      V_6B0_813 : Byte;   //  F-3B0-203 to drain valve open/close
+      V_6B0_814 : Byte;   //  F-3B0-201 to drain valve open/close
+      V_6B1_426 : Byte;   //  P-3B1-101 to drain, ST bypass valve open/close
+      Spare_76 : Byte;   //  Spare (F-3B0-208 to drain valve open/close)
+      Spare_77 : Byte;   //  Spare (F-3B0-206 to drain valve open/close)
+      Spare_78 : Byte;   //  Spare (F-3B0-204 to drain valve open/close)
+      V_6B1_325 : Byte;   // Vacuum line 1 valve open/close
+      V_6B1_431 : Byte;   //  P-3B1-101 pipe before to drain valve open/close
+      V_6B1_432 : Byte;   //  PRD line to drain valve open/close
+      V_6B1_433 : Byte;   //  P-3B1-101 to drain valve open/close
+      V_6B1_435 : Byte;   //  B1 MEW inlet to SB3 valve open/close
+      V_6C1_404 : Byte;   //  P-3C1-102 to drain, ST bypass valve open/close
+      V_6C1_405 : Byte;   //  P-3C1-102 to drain through ST valve open/close
+      V_6ME_324 : Byte;   // MEW block supply valve to C0 open/close
+      Spare_V_6AC_145 : Byte;   // Acetone line to D0 valve open/close
+      V_6AC_545 : Byte;   // Acetone line to A0 valve open/close
+      V_6E0_403 : Byte;   //  P-3E0-101 pipe after to drain valve open/close
+      V_6IN_403 : Byte;   //  Inline homogenizer to drain valve open/close
+      V_6FD_405 : Byte;   //  P-3FD-102 pipe after to drain, ST bypass valve open/close
+      V_6FD_406 : Byte;   //  P-3FD-102 pipe after to drain through ST valve open/close
+      V_6FD_407 : Byte;   //  P-3FD-102 pipe before to drain, ST bypass valve open/close
+      V_6FD_408 : Byte;   //  P-3FD-102 pipe before to drain through ST valve open/close
+      V_6FD_409 : Byte;   //  P-3FD-101 pipe after to drain, ST bypass valve open/close
+      V_6FD_421 : Byte;   //  Filter dryer product inlet valve open/close
+      V_6FD_422 : Byte;   //  P-3FD-101 pipe before to drain valve open/close
+      V_6FD_423 : Byte;   //  P-3FD-101 pipe after to drain valve open/close
+      V_6FD_424 : Byte;   //  P-3FD-102 pipe after to drain valve open/close
+      V_6FD_425 : Byte;   //  P-3FD-102 pipe before to drain valve open/close
+      V_6SF_404 : Byte;   //  P-3SF-101 pipe after to drain, ST bypass valve open/close
+      V_6SF_417 : Byte;   //  P-3SF-101 pipe before to drain valve open/close
+      V_6SF_418 : Byte;   //  P-3SF-101 pipe after to drain valve open/close
+      Spare_V_6ME_119 : Byte;   // PW supply line to drain valve open/close
+      XS_SR_6FD : Byte;   //  Reset safety relay Refiner
+      XS_SR_6SF : Byte;   //  Reset safety relay Scalper
+      IL_6B1_104 : Byte;   //  B1 vessel light
+      Spare_79 : Byte;   //  Spare (D1 vessel light)
+      CV_6B1_402_Z : Byte;   //  Air supply for analog valve
+      V_6AC_207 : Byte;   //  AC used T-3AC-202 outlet valve
+      V_6AC_217 : Byte;   //  Filter cabinet to AC waste T-3AC-201 valve
+      V_6AC_251 : Byte;   //  AC fresh T-3AC-203 outlet valve
+      V_6AC_253 : Byte;   //  Acetone drain to AC used T-3AC-202 valve
+      V_6AC_255 : Byte;   //  Acetone drain to AC waste T-3AC-201 valve
+      V_6AC_265 : Byte;   //  Filter F-3AC-101 supply valve
+      V_6AC_266 : Byte;   //  Filter F-3AC-201 supply valve
+      V_6AC_267 : Byte;   //  Filter F-3AC-101 outlet valve to Acetone line
+      V_6AC_268 : Byte;   //  Filter F-3AC-201 outlet valve to Acetone line
+      V_6AC_572 : Byte;   //  Filter F-3AC-101 outlet valve to Acetone waste line
+      V_6AC_573 : Byte;   //  Filter F-3AC-201 outlet valve to Acetone waste line
+      V_6FD_501 : Byte;   //  Potable water supply for liquid separator
+      V_6B1_503 : Byte;   //  Heat exchanger OUT drain valve
+      V_6B1_502 : Byte;   //  Liquid separator to drain valve
+      XS_SR : Byte;   //  Reset safety relay
+      Spare_80 : Byte;   // Spare (Start P-3SF-101)
+      Spare_81 : Byte;   //  Spare (XS-3A0-201, F-3A0-201 heating on/off)
+      PowerOn_VFD_InlineHomogenizer : Byte;
+      PowerOn_VFD_BatchHomogenizer : Byte;
+      HC_XS_SR : Byte;   // Reset Safety relay HC
+      V_6HC_134_O : Byte;   // HC Empty Jacket B1 Open
+      V_6HC_134_C : Byte;   // HC Empty Jacket B1 Close
+      V_6HC_223_O : Byte;   // HC Return Valve FD Agitator Open
+      V_6HC_223_C : Byte;   // HC Return Valve FD Agitator Close
+      V_6HC_224_O : Byte;   // HC Return Valve FD Vessel Open
+      V_6HC_224_C : Byte;   // HC Return Valve FD Vessel Close
+      V_6HC_226_O : Byte;   // HC Empty Jacket FD Agitator Open
+      V_6HC_226_C : Byte;   // HC Empty Jacket FD Agitator Close
+      V_6HC_227_O : Byte;   // HC Return Valve C0 Open
+      V_6HC_227_C : Byte;   // HC Return Valve C0 Close
+      V_6HC_228_O : Byte;   // HC Return Valve C1 Open
+      V_6HC_228_C : Byte;   // HC Return Valve C1 Close
+      V_6HC_229_O : Byte;   // HC Empty Jacket C1 Open
+      V_6HC_229_C : Byte;   // HC Empty Jacket C1 Close
+      V_6HC_230_O : Byte;   // HC Empty Jacket C0 Open
+      V_6HC_230_C : Byte;   // HC Empty Jacket C0 Close
+      V_6HC_231_O : Byte;   // HC Return Valve A0 Open
+      V_6HC_231_C : Byte;   // HC Return Valve A0 Close
+      V_6HC_232_O : Byte;   // HC Return Valve A1 Open
+      V_6HC_232_C : Byte;   // HC Return Valve A1 Close
+      V_6HC_233_O : Byte;   // HC Empty Jacket A1 Open
+      V_6HC_233_C : Byte;   // HC Empty Jacket A1 Close
+      V_6HC_237_O : Byte;   // HC Empty Jacket FD Vessel Open
+      V_6HC_237_C : Byte;   // HC Empty Jacket FD Vessel Close
+      V_6HC_240_O : Byte;   // HC Empty Jacket B0 Open
+      V_6HC_240_C : Byte;   // HC Empty Jacket B0 Close
+      V_6HC_244_O : Byte;   // HC Empty Jacket A0 Open
+      V_6HC_244_C : Byte;   // HC Empty Jacket A0 Close
+      V_6HC_104_O : Byte;   // HC Supply Valve B1 Open
+      V_6HC_104_C : Byte;   // HC Supply Valve B1 Close
+      V_6HC_234_O : Byte;   // HC Return Valve B1 Open
+      V_6HC_234_C : Byte;   // HC Return Valve B1 Close
+      V_6HC_117_O : Byte;   // HC HE103 Suppy Open
+      V_6HC_117_C : Byte;   // HC HE103 Suppy Close
+      V_6HC_118_O : Byte;   // HC HE103 Return Valve Open
+      V_6HC_118_C : Byte;   // HC HE103 Return Valve Close
+      V_6HC_119_O : Byte;   // HC HE103 InnerLoop Open
+      V_6HC_119_C : Byte;   // HC HE103 InnerLoop Close
+      V_6HC_120_O : Byte;   // HC Loop1 Swich CW HW Open
+      V_6HC_120_C : Byte;   // HC Loop1 Swich CW HW Close
+      V_6HC_121_O : Byte;   // HC HE101 Inlet Open
+      V_6HC_121_C : Byte;   // HC HE101 Inlet Close
+      V_6HC_122_O : Byte;   // HC HE101 Outlet Open
+      V_6HC_122_C : Byte;   // HC HE101 Outlet Close
+      V_6HC_150_O : Byte;   // HC Loop1 Recirculation Open
+      V_6HC_150_C : Byte;   // HC Loop1 Recirculation Close
+      V_6HC_225_O : Byte;   // HC Return Valve B0 Open
+      V_6HC_225_C : Byte;   // HC Return Valve B0 Close
+      V_6HC_247_O : Byte;   // HC Loop2 Recirculation Open
+      V_6HC_247_C : Byte;   // HC Loop2 Recirculation Close
+      V_6HC_251_O : Byte;   // HC Loop2 Main Supply Valve Open
+      V_6HC_251_C : Byte;   // HC Loop2 Main Supply Valve Close
+      V_6HC_246_O : Byte;   // HC Loop2 Main Return Valve Open
+      V_6HC_246_C : Byte;   // HC Loop2 Main Return Valve Close
+      H_5HC_148 : Byte;   //  // HC Heater ON                                            
+      H_5HC_249 : Byte;   //  // HC Heater ON                                               
+      V_6HC_254_O : Byte;   //  // HC Huber Supply Valve D0
+      V_6HC_254_C : Byte;   //  // HC Huber Supply Valve D0                             
+      V_6HC_253_O : Byte;   //  // HC Huber Return Valve D0                                                             
+      V_6HC_253_C : Byte;   //  // HC Huber Return Valve D0                                                              
+      Spare_V_6HC_383_O : Byte;   //  // HC Huber Supply Valve D1                                                                 
+      Spare_V_6HC_383_C : Byte;   //  // HC Huber Supply Valve D1                                                                    
+      Spare_V_6HC_384_O : Byte;   //  // HC Huber Return Valve D1                                                                 
+      Spare_V_6HC_384_C : Byte;   //  // HC Huber Return Valve D1                                  
+      V_6HC_385_O : Byte;   //  // HC Huber Supply Valve A1 Agitato                                           
+      V_6HC_385_C : Byte;   //  // HC Huber Supply Valve A1 Agitato                                            
+      V_6HC_386_O : Byte;   //  /// HC Huber Return Valve A1 Agitato                              
+      V_6HC_386_C : Byte;   //  /// HC Huber Return Valve A1 Agitato                            
+      V_6HC_387_O : Byte;   //  // HC Huber Supply Valve INL                                                      
+      V_6HC_387_C : Byte;   //  // HC Huber Supply Valve INL                                                
+      V_6HC_388_O : Byte;   //  // HC Huber Return Valve INL                        
+      V_6HC_388_C : Byte;   //  // HC Huber Return Valve INL                              
+      Spare_V_6A1_121 : Byte;
+      Spare_V_6A1_122 : Byte;
+      V_6A1_334 : Byte;
+      V_6A1_335 : Byte;
+      Spare_V_6A1_402 : Byte;
+      Spare_V_6A1_403 : Byte;
+      V_6IN_344 : Byte;
+      V_6IN_345 : Byte;
+      V_6IN_360 : Byte;
+      V_6IN_361 : Byte;
+      Spare_V_6IN_366 : Byte;
+      V_6IN_404 : Byte;
+      V_6IN_406 : Byte;
+      V_6IN_407 : Byte;
+      V_6SF_505 : Byte;
+      V_6SF_513 : Byte;
+      V_6SF_519 : Byte;
+      V_6SF_525 : Byte;
+      V_6SF_531 : Byte;
+      IL_6B2_104 : Byte;
+      V_6B0_121 : Byte;
+      V_6B0_122 : Byte;
+      V_6B0_364 : Byte;
+      V_6B0_366 : Byte;
+      V_6B0_367 : Byte;
+      V_6B0_369 : Byte;
+      Spare_V_251_374 : Byte;
+      Spare_V_251_377 : Byte;
+      V_6B2_113 : Byte;
+      V_6B2_303 : Byte;
+      V_6B2_306 : Byte;
+      V_6B2_308 : Byte;
+      V_6B2_314 : Byte;
+      V_6B2_315 : Byte;
+      V_6B2_318 : Byte;
+      V_6B2_324 : Byte;
+      V_6B2_327 : Byte;
+      V_6B2_355 : Byte;
+      V_6B2_358 : Byte;
+      V_6B2_360 : Byte;
+      V_6B2_401 : Byte;
+      V_6B2_801 : Byte;
+      V_6B2_802 : Byte;
+      V_6B2_809 : Byte;
+      V_6B2_815 : Byte;
+      V_6B2_816 : Byte;
+      V_6A2_701 : Byte;
+      V_6A2_702 : Byte;
+      V_6A2_703 : Byte;
+      V_6A2_704 : Byte;
+      V_6A2_705 : Byte;
+      V_6A2_706 : Byte;
+      V_6B1_701 : Byte;
+      V_6B1_702 : Byte;
+      V_6B1_703 : Byte;
+      V_6B1_704 : Byte;
+      V_6B1_705 : Byte;
+      V_6B0_717 : Byte;
+      V_6B0_718 : Byte;
+      V_6B0_719 : Byte;
+      V_6B0_720 : Byte;
+      V_6B0_721 : Byte;
+      V_6B0_722 : Byte;
+      V_6B0_723 : Byte;
+      V_6B0_724 : Byte;
+      V_6B0_725 : Byte;
+      V_6B0_726 : Byte;
+      V_6C0_701 : Byte;
+      V_6C0_702 : Byte;
+      V_6C1_703 : Byte;
+      V_6B3_705 : Byte;
+      V_6B3_706 : Byte;
+      V_6B3_707 : Byte;
+      V_6B3_708 : Byte;
+      V_6B3_709 : Byte;
+      V_6B3_710 : Byte;
+      V_6B3_711 : Byte;
+      V_6B3_712 : Byte;
+      V_6B3_713 : Byte;
+      V_6B3_714 : Byte;
+      V_6B3_715 : Byte;
+      V_6B3_716 : Byte;
+      V_6B3_730 : Byte;
+      V_6A1_707 : Byte;
+      V_6HC_389_O : Byte;
+      V_6HC_389_C : Byte;
+      V_6B0_422 : Byte;
+      V_6B0_393 : Byte;
+      V_6B0_406 : Byte;
+      V_6B0_375 : Byte;
+      V_6B0_391 : Byte;
+   END_STRUCT;
+
+
+BEGIN
+   V_6IN_334 := 16#00;
+   Spare_V_6IN_335 := 16#00;
+   V_6IN_333 := 16#00;
+   V_6A0_801 := 16#00;
+   V_6A0_325 := 16#00;
+   V_6A0_312 := 16#00;
+   V_6A0_331 := 16#00;
+   Spare_5 := 16#00;
+   Spare_8 := 16#00;
+   Spare_10 := 16#00;
+   V_6A0_313 := 16#00;
+   Spare_11 := 16#00;
+   Spare_19 := 16#00;
+   Spare_20 := 16#00;
+   V_6A0_314 := 16#00;
+   V_6A0_315 := 16#00;
+   V_6A0_324 := 16#00;
+   V_6A0_327 := 16#00;
+   V_6A0_306 := 16#00;
+   V_6A0_304 := 16#00;
+   V_6A0_305 := 16#08;
+   V_6A0_111 := 16#01;
+   Spare_V_6A0_302 := 16#00;
+   V_6A0_303 := 16#00;
+   V_6A0_318 := 16#00;
+   V_6A1_801 := 16#00;
+   Spare_21 := 16#00;
+   Spare_22 := 16#00;
+   Spare_23 := 16#00;
+   Spare_24 := 16#00;
+   V_6B0_363 := 16#00;
+   V_6B0_365 := 16#00;
+   V_6B0_815 := 16#00;
+   V_6B0_816 := 16#00;
+   Spare_25 := 16#00;
+   V_6A1_333 := 16#00;
+   V_6A1_332 := 16#00;
+   V_6A1_312 := 16#00;
+   V_6A1_313 := 16#08;
+   V_6A1_314 := 16#00;
+   V_6A1_330 := 16#00;
+   V_6A1_331 := 16#00;
+   V_6A1_328 := 16#00;
+   V_6A1_329 := 16#00;
+   V_6A1_324 := 16#00;
+   V_6A1_327 := 16#00;
+   V_6A1_536 := 16#00;
+   V_6A1_326 := 16#00;
+   V_6A1_319 := 16#00;
+   V_6A1_111 := 16#00;
+   V_6A1_318 := 16#00;
+   V_6A1_115 := 16#00;
+   V_6A1_113 := 16#00;
+   V_6A1_322 := 16#00;
+   V_6A1_321 := 16#00;
+   V_6A1_309 := 16#00;
+   V_6A1_310 := 16#00;
+   V_6A1_308 := 16#00;
+   V_6A1_307 := 16#00;
+   V_6A1_342 := 16#00;
+   Spare_V_6A1_311 := 16#00;
+   V_6B0_802 := 16#00;
+   Spare_26 := 16#00;
+   V_6B0_358 := 16#00;
+   V_6B0_360 := 16#00;
+   V_6B0_357 := 16#00;
+   Spare_27 := 16#00;
+   V_6B0_801 := 16#00;
+   V_6B0_807 := 16#00;
+   V_6B0_808 := 16#00;
+   V_6B0_304 := 16#00;
+   V_6B0_305 := 16#00;
+   V_6B0_323 := 16#00;
+   V_6B0_806 := 16#00;
+   V_6B0_804 := 16#00;
+   V_6B0_809 := 16#00;
+   V_6B0_337 := 16#00;
+   V_6B0_338 := 16#00;
+   V_6B0_335 := 16#00;
+   V_6B0_344 := 16#00;
+   V_6B0_342 := 16#00;
+   V_6B0_327 := 16#00;
+   V_6B0_330 := 16#00;
+   V_6B0_332 := 16#00;
+   V_6B0_328 := 16#00;
+   V_6B0_345 := 16#00;
+   V_6B0_803 := 16#00;
+   V_6B0_339 := 16#00;
+   V_6B0_331 := 16#00;
+   V_6B0_346 := 16#00;
+   V_6B0_308 := 16#00;
+   Spare_28 := 16#00;
+   V_6B0_113 := 16#01;
+   V_6B0_336 := 16#00;
+   V_6B0_343 := 16#00;
+   V_6B0_329 := 16#00;
+   V_6B0_325 := 16#00;
+   V_6B0_351 := 16#00;
+   V_6B0_352 := 16#00;
+   V_6B0_350 := 16#00;
+   V_6B0_349 := 16#00;
+   V_6B0_318 := 16#00;
+   V_6B0_319 := 16#00;
+   V_6B0_317 := 16#00;
+   V_6B0_315 := 16#00;
+   V_6B0_316 := 16#00;
+   V_6B0_361 := 16#00;
+   V_6B0_324 := 16#00;
+   V_6B0_322 := 16#00;
+   V_6B0_321 := 16#00;
+   V_6B0_353 := 16#00;
+   V_6B0_303 := 16#00;
+   V_6B0_314 := 16#00;
+   V_6B0_312 := 16#00;
+   V_6B0_313 := 16#00;
+   V_6B0_311 := 16#00;
+   V_6B0_310 := 16#00;
+   V_6B0_355 := 16#00;
+   V_6B0_306 := 16#00;
+   IL_6B0_104 := 16#00;
+   Spare_29 := 16#00;
+   V_6B1_802 := 16#00;
+   V_6B1_309 := 16#00;
+   Spare_2 := 16#00;
+   V_6B1_366 := 16#00;
+   V_6B1_536 := 16#00;
+   V_6B1_537 := 16#00;
+   V_6B1_355 := 16#00;
+   Spare_30 := 16#00;
+   Spare_31 := 16#00;
+   V_6B1_346 := 16#00;
+   V_6B1_305 := 16#00;
+   V_6B1_347 := 16#00;
+   Spare_34 := 16#00;
+   Spare_35 := 16#00;
+   V_6B1_301 := 16#00;
+   Spare_36 := 16#00;
+   Spare_V_6B1_409 := 16#00;
+   V_6B1_338 := 16#00;
+   V_6B1_406 := 16#00;
+   V_6B1_341 := 16#00;
+   Spare_V_6B1_396 := 16#00;
+   V_6B1_398 := 16#00;
+   Spare_37 := 16#00;
+   V_6B1_392 := 16#00;
+   V_6B1_393 := 16#00;
+   V_6B1_401 := 16#00;
+   Spare_V_6B1_400 := 16#00;
+   V_6B1_399 := 16#00;
+   Spare_V_6B1_390 := 16#00;
+   V_6B1_115 := 16#00;
+   V_6B1_326 := 16#00;
+   V_6B1_331 := 16#00;
+   V_6B1_330 := 16#00;
+   V_6B1_328 := 16#00;
+   V_6B1_329 := 16#00;
+   V_6B1_320 := 16#00;
+   V_6B1_318 := 16#00;
+   V_6B1_319 := 16#08;
+   V_6B1_340 := 16#00;
+   V_6B1_111 := 16#00;
+   V_6B1_339 := 16#00;
+   V_6B1_113 := 16#00;
+   V_6B1_332 := 16#00;
+   V_6B1_333 := 16#00;
+   V_6B1_336 := 16#00;
+   V_6B1_337 := 16#00;
+   V_6B1_335 := 16#00;
+   V_6B1_334 := 16#00;
+   V_6B1_316 := 16#00;
+   V_6B1_315 := 16#00;
+   V_6B1_314 := 16#00;
+   V_6B1_317 := 16#00;
+   V_6B1_310 := 16#00;
+   V_6B1_308 := 16#00;
+   V_6B1_373 := 16#00;
+   V_6B1_375 := 16#00;
+   Spare_V_6B1_374 := 16#00;
+   V_6B1_801 := 16#00;
+   V_6B1_356 := 16#00;
+   V_6B1_307 := 16#00;
+   Spare_V_6B1_377 := 16#00;
+   V_6B1_389 := 16#00;
+   V_6B1_388 := 16#00;
+   Spare_V_6B1_386 := 16#00;
+   Spare_38 := 16#00;
+   V_6B1_380 := 16#00;
+   Spare_39 := 16#00;
+   V_6B1_379 := 16#00;
+   V_6B1_383 := 16#00;
+   V_6B1_391 := 16#00;
+   Spare_V_6B1_382 := 16#00;
+   V_6B1_313 := 16#00;
+   V_6B1_344 := 16#00;
+   V_6B1_312 := 16#00;
+   V_6B1_343 := 16#00;
+   V_6B1_311 := 16#00;
+   V_6B1_342 := 16#00;
+   Spare_40 := 16#00;
+   Spare_46 := 16#00;
+   V_6C0_802 := 16#00;
+   V_6C0_321 := 16#00;
+   V_6C0_307 := 16#00;
+   V_6C0_322 := 16#00;
+   V_6C0_811 := 16#00;
+   V_6C0_332 := 16#00;
+   Spare_47 := 16#00;
+   V_6C0_319 := 16#00;
+   Spare_48 := 16#00;
+   V_6C0_317 := 16#00;
+   V_6C0_313 := 16#00;
+   V_6C0_314 := 16#00;
+   V_6C0_323 := 16#00;
+   V_6C0_312 := 16#00;
+   V_6C0_327 := 16#00;
+   V_6C0_809 := 16#00;
+   Spare_49 := 16#00;
+   Spare_50 := 16#00;
+   V_6C0_113 := 16#01;
+   V_6C0_326 := 16#00;
+   V_6C0_308 := 16#00;
+   V_6C0_306 := 16#00;
+   V_6C0_309 := 16#00;
+   V_6C0_310 := 16#00;
+   V_6C0_801 := 16#00;
+   V_6C0_315 := 16#00;
+   IL_6C0_104 := 16#00;
+   Spare_32 := 16#00;
+   V_6C1_353 := 16#00;
+   V_6C1_351 := 16#00;
+   V_6C1_802 := 16#00;
+   V_6C1_380 := 16#00;
+   V_6C1_382 := 16#00;
+   V_6C1_536 := 16#00;
+   V_6C1_546 := 16#00;
+   V_6C1_547 := 16#00;
+   Spare_51 := 16#00;
+   Spare_52 := 16#00;
+   V_6C1_319 := 16#00;
+   Spare_V_6C1_311 := 16#00;
+   Spare_V_6C1_364 := 16#00;
+   Spare_53 := 16#00;
+   V_6C1_322 := 16#00;
+   V_6C1_363 := 16#00;
+   V_6C1_316 := 16#00;
+   V_6C1_317 := 16#00;
+   V_6C1_115 := 16#00;
+   V_6C1_309 := 16#00;
+   Spare_V_6C1_344 := 16#00;
+   V_6C1_347 := 16#00;
+   V_6C1_345 := 16#00;
+   V_6C1_346 := 16#00;
+   V_6C1_308 := 16#08;
+   V_6C1_307 := 16#00;
+   V_6C1_306 := 16#00;
+   V_6C1_305 := 16#00;
+   V_6C1_324 := 16#00;
+   V_6C1_325 := 16#00;
+   V_6C1_323 := 16#00;
+   V_6C1_318 := 16#00;
+   V_6C1_111 := 16#00;
+   V_6C1_113 := 16#00;
+   V_6C1_321 := 16#00;
+   V_6C1_320 := 16#00;
+   V_6C1_326 := 16#00;
+   V_6C1_327 := 16#00;
+   V_6C1_801 := 16#00;
+   Spare_V_6C1_330 := 16#00;
+   Spare_54 := 16#00;
+   V_6C1_335 := 16#00;
+   V_6C1_333 := 16#00;
+   Spare_55 := 16#00;
+   Spare_V_6D0_326 := 16#00;
+   Spare_V_6D0_327 := 16#00;
+   Spare_V_6D0_330 := 16#00;
+   V_6AC_550 := 16#00;
+   V_6AC_551 := 16#00;
+   Spare_V_6AC_552 := 16#00;
+   V_6AC_553 := 16#00;
+   Spare_56 := 16#00;
+   Spare_V_6D0_314 := 16#00;
+   Spare_V_6D0_315 := 16#08;
+   Spare_V_6D0_306 := 16#00;
+   Spare_V_6D0_304 := 16#00;
+   Spare_V_6D0_305 := 16#00;
+   Spare_V_6D0_316 := 16#00;
+   Spare_V_6D0_328 := 16#00;
+   Spare_V_6D0_303 := 16#00;
+   Spare_V_6D0_302 := 16#00;
+   Spare_V_6D0_801 := 16#00;
+   Spare_V_6D0_111 := 16#01;
+   Spare_V_6D0_319 := 16#00;
+   Spare_V_6D0_307 := 16#00;
+   Spare_V_6D1_801 := 16#00;
+   Spare_V_6D1_538 := 16#00;
+   Spare_V_6D1_302 := 16#00;
+   Spare_57 := 16#00;
+   Spare_58 := 16#00;
+   Spare_59 := 16#00;
+   Spare_3 := 16#00;
+   Spare_V_6D1_308 := 16#00;
+   Spare_V_6D1_309 := 16#00;
+   Spare_V_6D1_305 := 16#00;
+   Spare_V_6D1_304 := 16#00;
+   Spare_V_6D1_310 := 16#08;
+   Spare_V_6D1_111 := 16#00;
+   Spare_V_6D1_113 := 16#00;
+   Spare_V_6D1_314 := 16#00;
+   Spare_V_6D1_311 := 16#00;
+   Spare_V_6D1_115 := 16#00;
+   Spare_V_6D1_313 := 16#00;
+   Spare_V_6D1_303 := 16#00;
+   Spare_V_6D1_315 := 16#00;
+   V_6DR_202 := 16#01;
+   V_6DR_204 := 16#00;
+   V_6DR_203 := 16#00;
+   V_6E0_802 := 16#00;
+   V_6E0_322 := 16#00;
+   V_6E0_801 := 16#00;
+   V_6E0_502 := 16#00;
+   V_6E0_539 := 16#00;
+   Spare_12 := 16#00;
+   V_6E0_307 := 16#00;
+   V_6E0_309 := 16#00;
+   V_6E0_308 := 16#00;
+   V_6E0_319 := 16#00;
+   IL_6E0_104 := 16#00;
+   V_6E0_345 := 16#00;
+   V_6E0_313 := 16#00;
+   V_6E0_314 := 16#08;
+   V_6E0_306 := 16#00;
+   V_6E0_346 := 16#00;
+   V_6E0_305 := 16#00;
+   Spare_60 := 16#00;
+   V_6E0_323 := 16#00;
+   Spare_61 := 16#00;
+   V_6E0_304 := 16#00;
+   V_6E0_321 := 16#00;
+   V_6E0_303 := 16#00;
+   V_6E0_311 := 16#00;
+   V_6E0_310 := 16#00;
+   V_6E0_312 := 16#00;
+   V_6E0_316 := 16#00;
+   V_6E0_111 := 16#00;
+   V_6E0_115 := 16#00;
+   V_6E0_315 := 16#00;
+   V_6E0_113 := 16#00;
+   V_6E0_318 := 16#00;
+   V_6E0_317 := 16#00;
+   V_6E0_501 := 16#00;
+   V_6E0_511 := 16#00;
+   V_6E0_530 := 16#00;
+   Spare_62 := 16#00;
+   V_6FD_537 := 16#00;
+   V_6FD_306 := 16#08;
+   Spare_V_6FD_511 := 16#00;
+   V_6FD_305 := 16#00;
+   Spare_V_6FD_503 := 16#00;
+   V_6FD_363 := 16#00;
+   Spare_63 := 16#00;
+   V_6FD_362 := 16#00;
+   Spare_64 := 16#00;
+   V_6FD_505 := 16#08;
+   V_6FD_329 := 16#00;
+   V_6FD_531 := 16#00;
+   V_6FD_330 := 16#00;
+   Spare_65 := 16#00;
+   Spare_66 := 16#00;
+   V_6FD_512 := 16#00;
+   Spare_17 := 16#00;
+   V_6FD_525 := 16#00;
+   V_6FD_519 := 16#00;
+   V_6FD_513 := 16#01;
+   V_6FD_364 := 16#00;
+   V_6FD_307 := 16#00;
+   V_6FD_346 := 16#00;
+   V_6FD_113 := 16#01;
+   V_6FD_311 := 16#00;
+   V_6FD_310 := 16#00;
+   V_6IN_510 := 16#00;
+   V_6IN_512 := 16#00;
+   V_6FD_111 := 16#00;
+   V_6FD_115 := 16#00;
+   V_6FD_309 := 16#00;
+   V_6FD_347 := 16#00;
+   V_6FD_308 := 16#00;
+   V_6FD_801 := 16#00;
+   V_6FD_320 := 16#00;
+   V_6FD_319 := 16#00;
+   V_6FD_322 := 16#00;
+   V_6FD_323 := 16#00;
+   V_6FD_321 := 16#00;
+   V_6FD_325 := 16#00;
+   V_6FD_326 := 16#00;
+   V_6FD_324 := 16#00;
+   V_6FD_318 := 16#00;
+   V_6FD_317 := 16#00;
+   V_6FD_316 := 16#00;
+   V_6FD_312 := 16#00;
+   LG_6FD_806 := 16#00;
+   V_6FD_602 := 16#00;
+   V_6FD_603 := 16#00;
+   V_6IN_509 := 16#00;
+   V_6IN_511 := 16#00;
+   V_6IN_530 := 16#00;
+   V_6IN_536 := 16#00;
+   Spare_67 := 16#00;
+   Spare_68 := 16#00;
+   V_6IN_351 := 16#00;
+   V_6SF_312 := 16#00;
+   V_6SF_313 := 16#08;
+   V_6ME_143 := 16#00;
+   V_6ME_319 := 16#00;
+   Spare_V_6ME_320 := 16#00;
+   V_6AC_555 := 16#00;
+   V_6SF_319 := 16#00;
+   Spare_69 := 16#00;
+   V_6SF_302 := 16#00;
+   V_6SF_801 := 16#00;
+   LG_6SF_806 := 16#00;
+   V_6SF_113 := 16#01;
+   V_6SF_115 := 16#00;
+   V_6SF_314 := 16#00;
+   V_6SF_316 := 16#00;
+   V_6SF_111 := 16#00;
+   V_6SF_315 := 16#00;
+   V_6SF_303 := 16#00;
+   V_6SF_304 := 16#00;
+   V_6SF_309 := 16#00;
+   V_6SF_306 := 16#00;
+   V_6SF_310 := 16#00;
+   V_6SF_305 := 16#00;
+   V_6SF_307 := 16#00;
+   V_6SF_308 := 16#00;
+   Spare_70 := 16#01;
+   V_6ME_133 := 16#00;
+   V_6ME_121 := 16#00;
+   V_6ME_122 := 16#00;
+   V_6ME_124 := 16#00;
+   V_6ME_125 := 16#00;
+   Spare_V_6ME_129 := 16#00;
+   V_6ME_102 := 16#01;
+   V_6ME_132 := 16#00;
+   V_6ME_103 := 16#00;
+   V_6ME_105 := 16#00;
+   V_6ME_131 := 16#00;
+   V_6ME_120 := 16#00;
+   V_6ME_101 := 16#00;
+   V_6ME_128 := 16#00;
+   V_6ME_123 := 16#00;
+   V_6ME_127 := 16#00;
+   V_6ME_134 := 16#00;
+   Spare_V_6ME_130 := 16#00;
+   V_6ME_110 := 16#00;
+   V_6ME_126 := 16#00;
+   V_6ME_533 := 16#00;
+   V_6ME_115 := 16#00;
+   V_6ME_117 := 16#00;
+   V_6ME_113 := 16#00;
+   V_6ME_116 := 16#00;
+   V_6ME_107 := 16#00;
+   V_6ME_106 := 16#00;
+   V_6ME_111 := 16#00;
+   V_6ME_108 := 16#00;
+   V_6ME_109 := 16#00;
+   V_6ME_530 := 16#00;
+   Spare_V_6ME_531 := 16#00;
+   V_6ME_532 := 16#00;
+   V_6IN_358 := 16#00;
+   V_6IN_352 := 16#00;
+   V_6IN_357 := 16#01;
+   V_6IN_355 := 16#01;
+   V_6IN_356 := 16#00;
+   SVF_5FD_804 := 16#00;
+   SVF_5FD_801 := 16#01;
+   V_6A1_352 := 16#00;
+   V_6A1_356 := 16#00;
+   V_6A1_357 := 16#01;
+   V_6A1_358 := 16#00;
+   V_6A1_355 := 16#01;
+   V_6ME_534 := 16#00;
+   V_6ME_535 := 16#00;
+   Spare_V_6IN_349 := 16#00;
+   V_6IN_350 := 16#00;
+   V_6IN_348 := 16#01;
+   V_6ME_114 := 16#00;
+   V_6SF_602 := 16#00;
+   V_6SF_363 := 16#00;
+   V_6SF_362 := 16#00;
+   V_6FD_805 := 16#00;
+   V_6FD_806 := 16#00;
+   V_6SF_805 := 16#00;
+   V_6FD_357 := 16#01;
+   V_6ME_536 := 16#00;
+   V_6IN_359 := 16#00;
+   V_6ME_537 := 16#00;
+   V_6ME_538 := 16#00;
+   V_6B1_501 := 16#08;
+   SVF_5FD_803 := 16#00;
+   V_6A1_362 := 16#01;
+   V_6B0_401 := 16#00;
+   V_6B0_404 := 16#00;
+   V_6B1_412 := 16#00;
+   V_6B1_413 := 16#00;
+   V_6B1_414 := 16#00;
+   V_6B1_415 := 16#00;
+   V_6B1_416 := 16#00;
+   V_6B1_417 := 16#00;
+   V_6B1_418 := 16#00;
+   V_6B1_601 := 16#00;
+   V_6B1_602 := 16#00;
+   Spare_71 := 16#00;
+   V_6C0_401 := 16#00;
+   V_6C1_401 := 16#00;
+   V_6C1_601 := 16#00;
+   V_6E0_350 := 16#00;
+   V_6E0_351 := 16#00;
+   V_6E0_352 := 16#00;
+   V_6E0_601 := 16#00;
+   V_6E0_602 := 16#00;
+   V_6FD_411 := 16#00;
+   Spare_72 := 16#00;
+   V_6FD_413 := 16#00;
+   V_6FD_417 := 16#00;
+   V_6FD_420 := 16#00;
+   V_6IN_364 := 16#00;
+   V_6IN_365 := 16#00;
+   V_6SF_411 := 16#00;
+   V_6SF_415 := 16#00;
+   V_6SF_416 := 16#00;
+   V_6SF_603 := 16#00;
+   V_6SF_537 := 16#00;
+   XA_6SF_001 := 16#00;
+   XA_6FD_001 := 16#00;
+   Spare_MB_6FD_001 := 16#00;
+   V_6ME_135 := 16#00;
+   V_6ME_136 := 16#00;
+   V_6ME_137 := 16#00;
+   V_6ME_138 := 16#00;
+   V_6ME_140 := 16#00;
+   V_6ME_149 := 16#00;
+   PCV_6ME_102_Z := 16#00;
+   V_6B1_603 := 16#00;
+   SVF_6SF_101 := 16#01;
+   Spare_74 := 16#01;
+   V_6E0_820 := 16#00;
+   V_6SF_820 := 16#00;
+   V_6B1_820 := 16#00;
+   V_6B1_419 := 16#00;
+   V_6FD_820 := 16#00;
+   V_6FD_823 := 16#00;
+   SVF_6FD_802 := 16#00;
+   IL_6FD_104 := 16#00;
+   Spare_V_6ME_118 := 16#00;
+   WFI_Hot_Req := 16#00;
+   WFI_Cold_Req := 16#00;
+   Spare_75 := 16#00;
+   PW_Req := 16#00;
+   V_6AC_159 := 16#00;
+   V_6AC_158 := 16#00;
+   V_6ME_362 := 16#00;
+   V_6ME_139 := 16#00;
+   V_6ME_141 := 16#00;
+   Spare_V_6C0_534 := 16#00;
+   V_6C0_540 := 16#00;
+   V_6AC_546 := 16#00;
+   V_6AC_547 := 16#00;
+   V_6AC_548 := 16#00;
+   V_6AC_549 := 16#00;
+   V_6B0_810 := 16#00;
+   V_6B0_811 := 16#00;
+   V_6B0_812 := 16#00;
+   V_6B0_813 := 16#00;
+   V_6B0_814 := 16#00;
+   V_6B1_426 := 16#00;
+   Spare_76 := 16#00;
+   Spare_77 := 16#00;
+   Spare_78 := 16#00;
+   V_6B1_325 := 16#00;
+   V_6B1_431 := 16#00;
+   V_6B1_432 := 16#00;
+   V_6B1_433 := 16#00;
+   V_6B1_435 := 16#00;
+   V_6C1_404 := 16#00;
+   V_6C1_405 := 16#00;
+   V_6ME_324 := 16#00;
+   Spare_V_6AC_145 := 16#00;
+   V_6AC_545 := 16#00;
+   V_6E0_403 := 16#00;
+   V_6IN_403 := 16#00;
+   V_6FD_405 := 16#00;
+   V_6FD_406 := 16#00;
+   V_6FD_407 := 16#00;
+   V_6FD_408 := 16#00;
+   V_6FD_409 := 16#00;
+   V_6FD_421 := 16#00;
+   V_6FD_422 := 16#00;
+   V_6FD_423 := 16#00;
+   V_6FD_424 := 16#00;
+   V_6FD_425 := 16#00;
+   V_6SF_404 := 16#00;
+   V_6SF_417 := 16#00;
+   V_6SF_418 := 16#00;
+   Spare_V_6ME_119 := 16#00;
+   XS_SR_6FD := 16#00;
+   XS_SR_6SF := 16#00;
+   IL_6B1_104 := 16#00;
+   Spare_79 := 16#00;
+   CV_6B1_402_Z := 16#00;
+   V_6AC_207 := 16#00;
+   V_6AC_217 := 16#00;
+   V_6AC_251 := 16#00;
+   V_6AC_253 := 16#00;
+   V_6AC_255 := 16#00;
+   V_6AC_265 := 16#00;
+   V_6AC_266 := 16#00;
+   V_6AC_267 := 16#00;
+   V_6AC_268 := 16#00;
+   V_6AC_572 := 16#00;
+   V_6AC_573 := 16#00;
+   V_6FD_501 := 16#00;
+   V_6B1_503 := 16#00;
+   V_6B1_502 := 16#00;
+   XS_SR := 16#00;
+   Spare_80 := 16#00;
+   Spare_81 := 16#00;
+   PowerOn_VFD_InlineHomogenizer := 16#01;
+   PowerOn_VFD_BatchHomogenizer := 16#00;
+   HC_XS_SR := 16#00;
+   V_6HC_134_O := 16#08;
+   V_6HC_134_C := 16#00;
+   V_6HC_223_O := 16#01;
+   V_6HC_223_C := 16#00;
+   V_6HC_224_O := 16#01;
+   V_6HC_224_C := 16#00;
+   V_6HC_226_O := 16#08;
+   V_6HC_226_C := 16#00;
+   V_6HC_227_O := 16#01;
+   V_6HC_227_C := 16#00;
+   V_6HC_228_O := 16#01;
+   V_6HC_228_C := 16#00;
+   V_6HC_229_O := 16#08;
+   V_6HC_229_C := 16#00;
+   V_6HC_230_O := 16#08;
+   V_6HC_230_C := 16#00;
+   V_6HC_231_O := 16#01;
+   V_6HC_231_C := 16#00;
+   V_6HC_232_O := 16#01;
+   V_6HC_232_C := 16#00;
+   V_6HC_233_O := 16#08;
+   V_6HC_233_C := 16#00;
+   V_6HC_237_O := 16#08;
+   V_6HC_237_C := 16#00;
+   V_6HC_240_O := 16#08;
+   V_6HC_240_C := 16#00;
+   V_6HC_244_O := 16#08;
+   V_6HC_244_C := 16#00;
+   V_6HC_104_O := 16#00;
+   V_6HC_104_C := 16#00;
+   V_6HC_234_O := 16#01;
+   V_6HC_234_C := 16#00;
+   V_6HC_117_O := 16#00;
+   V_6HC_117_C := 16#00;
+   V_6HC_118_O := 16#00;
+   V_6HC_118_C := 16#00;
+   V_6HC_119_O := 16#01;
+   V_6HC_119_C := 16#00;
+   V_6HC_120_O := 16#01;
+   V_6HC_120_C := 16#00;
+   V_6HC_121_O := 16#00;
+   V_6HC_121_C := 16#00;
+   V_6HC_122_O := 16#00;
+   V_6HC_122_C := 16#00;
+   V_6HC_150_O := 16#01;
+   V_6HC_150_C := 16#00;
+   V_6HC_225_O := 16#01;
+   V_6HC_225_C := 16#00;
+   V_6HC_247_O := 16#01;
+   V_6HC_247_C := 16#00;
+   V_6HC_251_O := 16#00;
+   V_6HC_251_C := 16#00;
+   V_6HC_246_O := 16#08;
+   V_6HC_246_C := 16#00;
+   H_5HC_148 := 16#01;
+   H_5HC_249 := 16#01;
+   V_6HC_254_O := 16#01;
+   V_6HC_254_C := 16#00;
+   V_6HC_253_O := 16#08;
+   V_6HC_253_C := 16#00;
+   Spare_V_6HC_383_O := 16#00;
+   Spare_V_6HC_383_C := 16#00;
+   Spare_V_6HC_384_O := 16#01;
+   Spare_V_6HC_384_C := 16#00;
+   V_6HC_385_O := 16#00;
+   V_6HC_385_C := 16#00;
+   V_6HC_386_O := 16#01;
+   V_6HC_386_C := 16#00;
+   V_6HC_387_O := 16#00;
+   V_6HC_387_C := 16#00;
+   V_6HC_388_O := 16#01;
+   V_6HC_388_C := 16#00;
+   Spare_V_6A1_121 := 16#00;
+   Spare_V_6A1_122 := 16#00;
+   V_6A1_334 := 16#00;
+   V_6A1_335 := 16#00;
+   Spare_V_6A1_402 := 16#00;
+   Spare_V_6A1_403 := 16#00;
+   V_6IN_344 := 16#00;
+   V_6IN_345 := 16#00;
+   V_6IN_360 := 16#00;
+   V_6IN_361 := 16#00;
+   Spare_V_6IN_366 := 16#00;
+   V_6IN_404 := 16#00;
+   V_6IN_406 := 16#00;
+   V_6IN_407 := 16#00;
+   V_6SF_505 := 16#08;
+   V_6SF_513 := 16#01;
+   V_6SF_519 := 16#00;
+   V_6SF_525 := 16#00;
+   V_6SF_531 := 16#00;
+   IL_6B2_104 := 16#00;
+   V_6B0_121 := 16#00;
+   V_6B0_122 := 16#00;
+   V_6B0_364 := 16#00;
+   V_6B0_366 := 16#00;
+   V_6B0_367 := 16#00;
+   V_6B0_369 := 16#00;
+   Spare_V_251_374 := 16#00;
+   Spare_V_251_377 := 16#00;
+   V_6B2_113 := 16#01;
+   V_6B2_303 := 16#00;
+   V_6B2_306 := 16#00;
+   V_6B2_308 := 16#00;
+   V_6B2_314 := 16#00;
+   V_6B2_315 := 16#00;
+   V_6B2_318 := 16#00;
+   V_6B2_324 := 16#00;
+   V_6B2_327 := 16#00;
+   V_6B2_355 := 16#00;
+   V_6B2_358 := 16#00;
+   V_6B2_360 := 16#00;
+   V_6B2_401 := 16#00;
+   V_6B2_801 := 16#00;
+   V_6B2_802 := 16#00;
+   V_6B2_809 := 16#00;
+   V_6B2_815 := 16#00;
+   V_6B2_816 := 16#00;
+
+END_DATA_BLOCK
+
