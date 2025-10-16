@@ -179,7 +179,7 @@ public static partial class SiCADA
                         }
                         catch
                         {
-                            //Log.Information($"{_name} S7ServerAccumulator Can't connect to S7 PLC, retry in 3 seconds");
+                            Console.WriteLine($"S7ServerAccumulator Can't connect to S7 PLC, retry in 3 seconds");
                             try { await Task.Delay(3000, token); }
                             catch (TaskCanceledException) { /* normal on stop */ }
                         }
