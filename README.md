@@ -30,43 +30,17 @@ The following PLC models and development environments are supported by SiCADA an
 The following hardware and software configurations have been thoroughly tested and verified to work reliably:
 
 - **PLCs:**
-  - 🔌 Siemens S7-1517-3 PN/DP
+  - 🏗️ Siemens S7-1517-3 PN/DP
 
 - **IDEs:**
-  - 🧰 Siemens TIA Portal v15.1
+  - 💻 Siemens TIA Portal v15.1
 
 ---
 
-## 📥 Installation
-
-> 🛠️ _Coming soon_  
-> You’ll be able to install SiCADA via **NuGet** once the package is published.
-
----
-
-## 💡 Usage Example
-
-> 📄 _Coming soon_  
-> Example code for connecting to a PLC, accessing DBs, and reading/writing values.
-
----
-
-## 🛣️ Roadmap
-
-- [ ] 🤝 Add support for Rockwell PLCs
-- [ ] 🧪 Extensive unit tests and CI/CD integration
-
----
-
-## 🙏 Acknowledgments
+##Acknowledgments
 
 Special thanks to:
 
-- 💡 **[S7.Net](https://github.com/killnine/s7netplus)** – for the foundational Siemens S7 communication library.
+- **[S7.Net](https://github.com/killnine/s7netplus)** – for the foundational Siemens S7 communication library.
 
 ---
-
-## 📄 License
-
-This project is licensed under the **MIT License**.  
-See the [LICENSE](./LICENSE) file for details.
