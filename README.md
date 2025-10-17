@@ -1,4 +1,5 @@
 ﻿# 🧰 SiCADA
+<img width="1920" height="1079" alt="Example HMI program with SiCADA and Godot" src="https://github.com/user-attachments/assets/b2954ee3-b887-4c11-99ab-8c9d8fcc3cbc" />
 
 **SiCADA** is a ⚙️ C# communication library for PLCs that combines:
 
